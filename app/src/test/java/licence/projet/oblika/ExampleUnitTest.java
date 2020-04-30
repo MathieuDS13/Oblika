@@ -1,4 +1,4 @@
-package licence.projet.oblica;
+package licence.projet.oblika;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package licence.projet.oblica;
+package licence.projet.oblika;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("licence.projet.oblica", appContext.getPackageName());
+        assertEquals("licence.projet.oblika", appContext.getPackageName());
     }
 }
