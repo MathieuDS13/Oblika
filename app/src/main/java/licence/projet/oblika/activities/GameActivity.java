@@ -1,4 +1,4 @@
-package licence.projet.oblika;
+package licence.projet.oblika.activities;
 
 import android.app.Activity;
 import android.opengl.GLSurfaceView;
