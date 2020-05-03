@@ -16,4 +16,26 @@ public class Mesh {
 
         return b;
     }
+
+    public static FloatBuffer gen2DQuadUV() {
+        FloatBuffer b = FloatBuffer.allocate(12);
+
+        /*b.put(1f); b.put(1f);
+        b.put(0f); b.put(1f);
+        b.put(0f); b.put(0f);
+
+        b.put(1f); b.put(1f);
+        b.put(0f); b.put(0f);
+        b.put(1f); b.put(0f);*/
+
+        b.put(1f); b.put(0f);
+        b.put(0f); b.put(0f);
+        b.put(0f); b.put(1f);
+
+        b.put(1f); b.put(0f);
+        b.put(0f); b.put(1f);
+        b.put(1f); b.put(1f);
+
+        return b;
+    }
 }

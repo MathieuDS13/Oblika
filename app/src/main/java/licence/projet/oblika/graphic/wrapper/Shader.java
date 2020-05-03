@@ -2,6 +2,8 @@ package licence.projet.oblika.graphic.wrapper;
 
 import android.opengl.GLES30;
 
+import licence.projet.oblika.graphic.helper.ResLoader;
+
 public class Shader {
     private String name;
 
@@ -16,10 +18,10 @@ public class Shader {
     public Shader(String vs, String fs, String name) throws Exception {
         this.name = name;
 
-        vertexShader = createShader(GLES30.GL_VERTEX_SHADER, /*ResLoader.text(vs)*/ vs);
+        vertexShader = createShader(GLES30.GL_VERTEX_SHADER, ResLoader.text(vs));
         if(vertexShader == 0) throw new Exception("Erreur creation VS");
 
-        fragmentShader = createShader(GLES30.GL_FRAGMENT_SHADER, /*ResLoader.text(fs)*/ fs);
+        fragmentShader = createShader(GLES30.GL_FRAGMENT_SHADER, ResLoader.text(fs));
         if(fragmentShader == 0) throw new Exception("Erreur creation FS");
 
         createProgramme();
