@@ -1,4 +1,4 @@
-package licence.projet.oblika.Model;
+package licence.projet.oblika.model;
 
 public interface Platform {
     void getType();
