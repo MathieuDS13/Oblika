@@ -11,5 +11,7 @@ public class GameActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        gLView = new GLView(this);
+        setContentView(gLView);
     }
 }
