@@ -1,6 +1,8 @@
 package licence.projet.oblika.engine.utils;
 
-public class Accelerometer {
+import android.hardware.SensorListener;
+
+public class Accelerometer implements SensorListener {
     float x, y, z;
 
     public void onSensorChanged(int sensor, float[] values) {
@@ -10,6 +12,11 @@ public class Accelerometer {
         y = values[1];
 
         z = values[2];
+
+    }
+
+    @Override
+    public void onAccuracyChanged(int i, int i1) {
 
     }
 }
