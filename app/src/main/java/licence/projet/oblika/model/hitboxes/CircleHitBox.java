@@ -1,6 +1,8 @@
-package licence.projet.oblika.model;
+package licence.projet.oblika.model.hitboxes;
 
-public class CircleHitBox implements HitBox{
+import licence.projet.oblika.model.Point2D;
+
+public class CircleHitBox implements HitBox {
     private Point2D center;
     private double radius;
 
