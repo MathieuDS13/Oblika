@@ -45,6 +45,9 @@ public class TestRenderer implements Renderer {
 
         GLES30.glEnable(GLES30.GL_DEPTH_TEST);
         GLES30.glEnable(GLES30.GL_TEXTURE_2D);
+
+        /*GLES30.glEnable(GLES30.GL_CULL_FACE);
+        GLES30.glCullFace(GLES30.GL_CCW);*/
     }
 
     @Override
