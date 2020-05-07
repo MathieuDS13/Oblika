@@ -1,0 +1,16 @@
+#version 300 es
+precision mediump float;
+
+const vec3 color = vec3(0.9, 0.7, 0.1);
+
+in vec2 uv;
+out vec4 fragColor;
+
+uniform float offset; // mod((time * 0.1), 1.0)
+
+void main() {
+    float val = sin((uv.x - uv.y - offset) * 50.0);
+    val = smoothstep(0.0, 0.1, val);
+
+    fragColor = vec4(color, val);
+}
