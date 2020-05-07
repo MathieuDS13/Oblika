@@ -18,6 +18,7 @@ public class Accelerometer implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int i) {
+        //a implémenter ? des que la precision des points bougent
 
     }
 
