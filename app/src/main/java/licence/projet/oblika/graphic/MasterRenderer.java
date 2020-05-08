@@ -4,7 +4,7 @@ import android.opengl.GLES30;
 
 import java.util.List;
 
-import licence.projet.oblika.model.HitBox;
+import licence.projet.oblika.model.hitboxes.HitBox;
 
 public class MasterRenderer {
     private float[] cameraMatrix;
@@ -36,6 +36,6 @@ public class MasterRenderer {
     }
 
     public void finish() {
-        
+
     }
 }
