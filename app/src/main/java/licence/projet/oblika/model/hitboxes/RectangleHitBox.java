@@ -1,6 +1,8 @@
-package licence.projet.oblika.model;
+package licence.projet.oblika.model.hitboxes;
 
-public class RectangleHitBox implements HitBox{
+import licence.projet.oblika.model.Point2D;
+
+public class RectangleHitBox implements HitBox {
     private Point2D topLeft;
     private Point2D botRight;
 
