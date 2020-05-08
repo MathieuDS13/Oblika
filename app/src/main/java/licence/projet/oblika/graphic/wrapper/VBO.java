@@ -21,12 +21,15 @@ public class VBO extends BufferObject {
         this.dataLength = data.capacity() * 4;
 
         GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, pointer);
-        data.position(0);
+        //data.position(0);
+        data.rewind();
         GLES30.glBufferData(GLES30.GL_ARRAY_BUFFER, dataLength, data, usage);
     }
 
     public void setData(FloatBuffer data, int offset) {
         GLES30.glBindBuffer(GLES30.GL_ARRAY_BUFFER, pointer);
+        //data.position(0);
+        data.rewind();
         GLES30.glBufferSubData(GLES30.GL_ARRAY_BUFFER, offset * 4, dataLength, data);
     }
 

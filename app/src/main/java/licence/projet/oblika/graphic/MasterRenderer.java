@@ -4,35 +4,64 @@ import android.opengl.GLES30;
 
 import java.util.List;
 
-import licence.projet.oblika.model.hitboxes.HitBox;
+import licence.projet.oblika.graphic.helper.Matrix;
+import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MasterRenderer {
-    private float[] cameraMatrix;
+    public static float scale = 10f;
+
+    private float[] viewMatrix;
+    private float[] projectionMatrix;
+    private float[] vpMatrix;
+
+    private float viewportWidth;
+    private float viewportHeight;
     private float ratio;
 
-    public MasterRenderer() {
+    private HitboxRenderer hitboxRenderer;
 
+    public MasterRenderer() {
+        viewMatrix = Matrix.mat4GenIdentity();
+        projectionMatrix = Matrix.mat4GenIdentity();
+        vpMatrix = Matrix.mat4GenIdentity();
+
+        try {
+            hitboxRenderer = new HitboxRenderer();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void refresh(int width, int height) {
         GLES30.glViewport(0, 0, width, height);
-        ratio = ((float) width) / ((float) height);
-        GLES30.glClearColor(0f, 0f, 0f, 1.0f);
+        viewportWidth = (float) width;
+        viewportHeight = (float) height;
+        ratio = viewportWidth / viewportHeight;
+        GLES30.glClearColor(0f, 0.3f, 0.8f, 1.0f);
 
         GLES30.glEnable(GLES30.GL_DEPTH_TEST);
         GLES30.glEnable(GLES30.GL_TEXTURE_2D);
+
+        float xOffset = scale / 2f;
+        float yOffset = scale / 2f / ratio;
+
+        Matrix.mat4Ortho(projectionMatrix, -xOffset, xOffset, -yOffset, yOffset, 0, 1);
+        Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
     }
 
     public void prepare() {
-
+        GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT | GLES30.GL_DEPTH_BUFFER_BIT);
     }
 
     public void camera() {
-
+        Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
     }
 
-    public void hitboxes(List<HitBox> hitBoxes) {
-
+    public void hitboxes(List<RectangleHitBox> hitboxes) {
+        hitboxRenderer.prepare(vpMatrix);
+        for(RectangleHitBox hitbox : hitboxes) {
+            hitboxRenderer.render(hitbox);
+        }
     }
 
     public void finish() {

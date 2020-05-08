@@ -2,12 +2,12 @@
 precision mediump float;
 
 layout(location = 0) in vec2 vertex;
+layout(location = 1) in vec2 texPos;
 out vec2 uv;
 
-uniform vec2 position;
+layout(location = 0) uniform mat4 VP;
 
 void main() {
-    vec2 pos = vertex + position;
-    uv = pos;
-    gl_Position = vec4(pos, 0.5, 1.0);
+    uv = texPos;
+    gl_Position = VP * vec4(vertex, -0.5, 1.0);
 }
