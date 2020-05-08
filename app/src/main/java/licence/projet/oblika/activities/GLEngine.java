@@ -6,26 +6,25 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import licence.projet.oblika.Time;
-import licence.projet.oblika.graphic.Renderer;
-import licence.projet.oblika.graphic.TestRenderer;
+import licence.projet.oblika.engine.Game;
 
 public class GLEngine implements GLSurfaceView.Renderer {
-    private Renderer testRenderer;
+    private Game game;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-        testRenderer = new TestRenderer();
+        game = new Game();
     }
 
     @Override
     public void onSurfaceChanged(GL10 gl, int width, int height) {
-        testRenderer.refresh(width, height);
+        game.getRenderer().refresh(width, height);
     }
 
     @Override
     public void onDrawFrame(GL10 gl) {
         Time.update();
-
-        testRenderer.render();
+        game.update();
+        game.draw();
     }
 }
