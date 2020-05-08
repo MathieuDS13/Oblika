@@ -8,11 +8,13 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
+import licence.projet.oblika.engine.Game;
 import licence.projet.oblika.engine.utils.Accelerometer;
 import licence.projet.oblika.engine.utils.TouchEvent;
 
 public class GameActivity extends Activity {
     private GLSurfaceView gLView;
+    private Game game;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,11 @@ public class GameActivity extends Activity {
 
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(accelerometerListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
+
+        game = new Game();
+
         gLView = new GLView(this);
+
         setContentView(gLView);
         gLView.setOnTouchListener(touchEvent);
     }
