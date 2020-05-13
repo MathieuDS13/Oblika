@@ -13,6 +13,7 @@ public class GLEngine implements GLSurfaceView.Renderer {
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
+        Time.init();
         game = new Game();
     }
 
