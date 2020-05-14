@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 
 import licence.projet.oblika.engine.Game;
-import licence.projet.oblika.engine.utils.Accelerometer;
+import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.engine.utils.TouchEvent;
 
 public class GameActivity extends Activity {
@@ -17,7 +17,7 @@ public class GameActivity extends Activity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Accelerometer accelerometerListener = new Accelerometer();
+        AccelerometerListener accelerometerListener = new AccelerometerListener();
         TouchEvent touchEvent = new TouchEvent();
 
 
