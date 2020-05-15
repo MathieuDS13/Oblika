@@ -5,6 +5,8 @@ import android.opengl.GLES30;
 import java.util.List;
 
 import licence.projet.oblika.graphic.helper.Matrix;
+import licence.projet.oblika.model.Camera;
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MasterRenderer {
@@ -53,7 +55,11 @@ public class MasterRenderer {
         GLES30.glClear(GLES30.GL_COLOR_BUFFER_BIT | GLES30.GL_DEPTH_BUFFER_BIT);
     }
 
-    public void camera() {
+    public void camera(Camera camera) {
+        Point2D position = camera.getPosition();
+        viewMatrix[12] = -position.getX();
+        viewMatrix[13] = -position.getY();
+
         Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
     }
 
