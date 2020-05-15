@@ -4,8 +4,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class TouchEventListener implements View.OnTouchListener {
-    float x;
-    float y;
+    private static float x;
+    private static float y;
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -24,11 +24,11 @@ public class TouchEventListener implements View.OnTouchListener {
         return false;
     }
 
-    public float getX() {
+    public static float getX() {
         return x;
     }
 
-    public float getY() {
+    public static float getY() {
         return y;
     }
 

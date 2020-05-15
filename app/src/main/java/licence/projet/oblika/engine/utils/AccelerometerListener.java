@@ -7,7 +7,7 @@ import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 
 public class AccelerometerListener implements SensorEventListener {
-    static float x, y, z;
+    private static float x, y, z;
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
