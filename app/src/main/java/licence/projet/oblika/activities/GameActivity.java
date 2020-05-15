@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 
 import licence.projet.oblika.engine.Game;
 import licence.projet.oblika.engine.utils.AccelerometerListener;
-import licence.projet.oblika.engine.utils.TouchEvent;
+import licence.projet.oblika.engine.utils.TouchEventListener;
 
 public class GameActivity extends Activity {
     private GLSurfaceView gLView;
@@ -18,7 +18,7 @@ public class GameActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         AccelerometerListener accelerometerListener = new AccelerometerListener();
-        TouchEvent touchEvent = new TouchEvent();
+        TouchEventListener touchEvent = new TouchEventListener();
 
 
         super.onCreate(savedInstanceState);

@@ -3,7 +3,7 @@ package licence.projet.oblika.engine.utils;
 import android.view.MotionEvent;
 import android.view.View;
 
-public class TouchEvent implements View.OnTouchListener {
+public class TouchEventListener implements View.OnTouchListener {
     float x;
     float y;
 
