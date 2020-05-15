@@ -6,8 +6,8 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 
-public class Accelerometer implements SensorEventListener {
-    float x, y, z;
+public class AccelerometerListener implements SensorEventListener {
+    private static float x, y, z;
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
@@ -22,15 +22,15 @@ public class Accelerometer implements SensorEventListener {
 
     }
 
-    public float getX() {
+    public static float getX() {
         return x;
     }
 
-    public float getY() {
+    public static float getY() {
         return y;
     }
 
-    public float getZ() {
+    public static float getZ() {
         return z;
     }
 }

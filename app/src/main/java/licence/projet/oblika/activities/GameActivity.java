@@ -9,16 +9,16 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 
 import licence.projet.oblika.engine.Game;
-import licence.projet.oblika.engine.utils.Accelerometer;
-import licence.projet.oblika.engine.utils.TouchEvent;
+import licence.projet.oblika.engine.utils.AccelerometerListener;
+import licence.projet.oblika.engine.utils.TouchEventListener;
 
 public class GameActivity extends Activity {
     private GLSurfaceView gLView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Accelerometer accelerometerListener = new Accelerometer();
-        TouchEvent touchEvent = new TouchEvent();
+        AccelerometerListener accelerometerListener = new AccelerometerListener();
+        TouchEventListener touchEvent = new TouchEventListener();
 
 
         super.onCreate(savedInstanceState);
