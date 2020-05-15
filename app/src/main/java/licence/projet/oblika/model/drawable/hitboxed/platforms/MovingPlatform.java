@@ -17,11 +17,11 @@ public class MovingPlatform implements Platform {
         this.isVertical = isVertical;
     }
 
-    public boolean isVertical(){
+    public boolean isVertical() {
         return isVertical;
     }
 
-    public void update(double x, double y){
+    public void update(float x, float y){
         if(isVertical) position.setY(position.getY() + y);
         else position.setX(position.getX() + x);
     }

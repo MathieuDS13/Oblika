@@ -4,9 +4,9 @@ import licence.projet.oblika.model.Point2D;
 
 public class CircleHitBox implements HitBox {
     private Point2D center;
-    private double radius;
+    private float radius;
 
-    public CircleHitBox(Point2D center, double radius){
+    public CircleHitBox(Point2D center, float radius){
         this.center = center;
         this.radius = radius;
     }

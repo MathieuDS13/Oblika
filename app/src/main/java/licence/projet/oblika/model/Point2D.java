@@ -1,27 +1,27 @@
 package licence.projet.oblika.model;
 
 public class Point2D {
-    private double x;
-    private double y;
+    private float x;
+    private float y;
 
-    public Point2D(double x, double y) {
+    public Point2D(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 }
