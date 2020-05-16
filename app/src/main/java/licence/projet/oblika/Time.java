@@ -21,6 +21,8 @@ public class Time {
         Time.now = (Time.l_now / 1e9f);
         Time.delta = 0;
         Time.last = Time.now;
+
+        update();
     }
 
     public static void update() {
