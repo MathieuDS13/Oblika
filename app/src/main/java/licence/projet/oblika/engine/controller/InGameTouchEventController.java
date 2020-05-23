@@ -25,7 +25,8 @@ public class InGameTouchEventController {
         float touchEvent_x = TouchEventListener.getX();
         float touchEvent_y = TouchEventListener.getY();
         this.touchEvent_pos = new Point2D(touchEvent_x,touchEvent_y);
-        if()
+        if(leftBox.contains(touchEvent_pos)) this.direction = Direction.LEFT;
+        if(rightBox.contains(touchEvent_pos)) this.direction = Direction.RIGHT;
     }
 
     public RectangleHitBox initLeftBox(){
