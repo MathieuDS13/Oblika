@@ -1,31 +1,41 @@
 package licence.projet.oblika.model.level;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.drawable.hitboxed.platforms.MovingPlatform;
 
 public class LevelStructure {
 
+    String levelName;
     MainCharacter mainCharacter;
     Point2D start;
     Point2D end;
     List<MovingPlatform> movingPlatformList;
     List<FixedPlatform> fixedPlatformList;
+    List<Enemy> enemyList;
 
-    public void LevelStructure(){
+    public void LevelStructure() {
+        this.levelName = "";
         this.fixedPlatformList = new ArrayList<>();
         this.movingPlatformList = new ArrayList<>();
+        this.enemyList = new ArrayList<>();
     }
 
-    public void setMovingPlatformList(MovingPlatform platform){
+    public void addEnemy(Enemy enemy) {
+        enemyList.add(enemy);
+    }
+
+    public void addMovingPlatformList(MovingPlatform platform) {
         movingPlatformList.add(platform);
     }
 
-    public void setFixedPlatformList(FixedPlatform platform){
+    public void addFixedPlatformList(FixedPlatform platform) {
         fixedPlatformList.add(platform);
     }
 
@@ -47,5 +57,9 @@ public class LevelStructure {
 
     public void setEnd(Point2D end) {
         this.end = end;
+    }
+
+    public void setLevelName(String levelName) {
+        this.levelName = levelName;
     }
 }
