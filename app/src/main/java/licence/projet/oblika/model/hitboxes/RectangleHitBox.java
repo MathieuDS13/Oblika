@@ -18,4 +18,6 @@ public class RectangleHitBox implements HitBox {
     public Point2D getBotRight() {
         return botRight;
     }
+
+
 }
