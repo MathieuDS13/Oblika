@@ -11,7 +11,7 @@ public class InGameTouchEventController {
     Point2D touchEvent_pos;
     RectangleHitBox leftBox;
     RectangleHitBox rightBox;
-    enum Direction{ LEFT, RIGHT};
+    enum Direction{ LEFT, RIGHT, NONE};
     Direction direction;
 
     public InGameTouchEventController(GLView view) {
@@ -25,6 +25,7 @@ public class InGameTouchEventController {
         float touchEvent_x = TouchEventListener.getX();
         float touchEvent_y = TouchEventListener.getY();
         this.touchEvent_pos = new Point2D(touchEvent_x,touchEvent_y);
+        this.direction = Direction.NONE;
         if(leftBox.contains(touchEvent_pos)) this.direction = Direction.LEFT;
         if(rightBox.contains(touchEvent_pos)) this.direction = Direction.RIGHT;
     }
