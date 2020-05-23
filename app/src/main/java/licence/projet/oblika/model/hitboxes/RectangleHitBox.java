@@ -18,4 +18,8 @@ public class RectangleHitBox implements HitBox {
     public Point2D getBotRight() {
         return botRight;
     }
+
+    public boolean contains (Point2D point){
+        //RETOURNE SI UN POINT EST DANS LE RECTANGLE
+    }
 }
