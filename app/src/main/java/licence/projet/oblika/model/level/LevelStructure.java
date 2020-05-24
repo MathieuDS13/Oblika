@@ -62,4 +62,24 @@ public class LevelStructure {
     public void setLevelName(String levelName) {
         this.levelName = levelName;
     }
+
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public MainCharacter getMainCharacter() {
+        return mainCharacter;
+    }
+
+    public List<MovingPlatform> getMovingPlatformList() {
+        return movingPlatformList;
+    }
+
+    public List<FixedPlatform> getFixedPlatformList() {
+        return fixedPlatformList;
+    }
+
+    public List<Enemy> getEnemyList() {
+        return enemyList;
+    }
 }
