@@ -1,10 +1,11 @@
-package licence.projet.oblika.model.drawable.hitboxed.platforms;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms;
 
+import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
-public class FixedPlatform implements Platform {
+public class FixedPlatform implements Platform, GameObject {
 
     private String textureID;
     private Point2D position;
@@ -35,5 +36,10 @@ public class FixedPlatform implements Platform {
     @Override
     public String getTextureId() {
         return textureID;
+    }
+
+    @Override
+    public void update() {
+        //Do nothing
     }
 }

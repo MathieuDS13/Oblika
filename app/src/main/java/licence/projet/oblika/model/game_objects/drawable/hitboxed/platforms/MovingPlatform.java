@@ -1,20 +1,26 @@
-package licence.projet.oblika.model.drawable.hitboxed.platforms;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms;
 
+import licence.projet.oblika.Time;
+import licence.projet.oblika.engine.utils.AccelerometerListener;
+import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
-public class MovingPlatform implements Platform {
+public class MovingPlatform implements Platform, GameObject {
 
     private String textureID;
     private Point2D position;
     private boolean isVertical;
     private HitBox hitBox;
+    private float range;
+    private float slidingSpeed = 0.07f;
 
-    public MovingPlatform(String textureID, Point2D position, boolean isVertical) {
+    public MovingPlatform(String textureID, Point2D position, boolean isVertical, float range) {
         this.textureID = textureID;
         this.position = position;
         this.isVertical = isVertical;
+        this.range = range;
     }
 
     public boolean isVertical() {
@@ -45,5 +51,17 @@ public class MovingPlatform implements Platform {
     @Override
     public String getTextureId() {
         return textureID;
+    }
+
+    @Override
+    public void update() {
+        if(isVertical){
+            if(AccelerometerListener.getX() > 1.5) this.position.setX(position.getX() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getX() < -1.5) this.position.setX(position.getX() - slidingSpeed * Time.delta);
+
+        } else {
+            if(AccelerometerListener.getY() > 1.5) this.position.setY(position.getY() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getY() < -1.5) this.position.setY(position.getY() - slidingSpeed * Time.delta);
+        }
     }
 }

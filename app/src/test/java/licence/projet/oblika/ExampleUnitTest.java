@@ -3,8 +3,8 @@ package licence.projet.oblika;
 import org.junit.Test;
 
 import licence.projet.oblika.engine.utils.LevelLoader;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.FixedPlatform;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
 
 import static org.junit.Assert.*;

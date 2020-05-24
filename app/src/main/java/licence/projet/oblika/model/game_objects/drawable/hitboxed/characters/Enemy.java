@@ -1,9 +1,10 @@
-package licence.projet.oblika.model.drawable.hitboxed.characters;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
 
-public class Enemy implements Character {
+public class Enemy implements Character, GameObject {
 
     private String textureID;
     private Point2D position;
@@ -26,5 +27,10 @@ public class Enemy implements Character {
     @Override
     public HitBox getHitBox() {
         return null;
+    }
+
+    @Override
+    public void update() {
+        //TODO faire l'IA des ennemis enfin s'ils ont un cerveau
     }
 }

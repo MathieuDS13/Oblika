@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import licence.projet.oblika.model.Point2D;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.FixedPlatform;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
 
 
@@ -98,10 +98,12 @@ public class LevelLoader {
     private static void generateMovingPlateform(String[] args, LevelStructure level) throws Exception {
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
+        float range = Float.parseFloat(args[4]);
         verifyFloat(posX);
         verifyFloat(posY);
+        verifyFloat(range);
         boolean isVertical = Boolean.parseBoolean(args[3]);
-        level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical));
+        level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range) );
     }
 
     private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {

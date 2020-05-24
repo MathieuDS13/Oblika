@@ -1,4 +1,4 @@
-package licence.projet.oblika.model.drawable;
+package licence.projet.oblika.model.game_objects.drawable;
 
 import licence.projet.oblika.model.Point2D;
 
