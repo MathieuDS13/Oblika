@@ -14,7 +14,7 @@ public class MovingPlatform implements Platform, GameObject {
     private boolean isVertical;
     private HitBox hitBox;
     private float range;
-    private float slidingSpeed = (float) 0.07;
+    private float slidingSpeed = 0.07f;
 
     public MovingPlatform(String textureID, Point2D position, boolean isVertical, float range) {
         this.textureID = textureID;
