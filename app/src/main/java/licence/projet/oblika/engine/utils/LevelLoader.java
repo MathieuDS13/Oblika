@@ -3,7 +3,6 @@ package licence.projet.oblika.engine.utils;
 import android.content.Context;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
@@ -42,31 +41,35 @@ public class LevelLoader {
         try {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line == splitter) {
+                if (line.equals(splitter)) {
                     line = reader.readLine().toUpperCase().trim();
-                    type.valueOf(line);
+                    type = Type.valueOf(line);
                     continue;
                 }
 
                 String[] args = line.split(splitter);
-                switch (type) {
-                    case FIX_PLAT:
-                        generateFixedPlateform(args, level);
-                        break;
-                    case ENNEMY:
-                        generateEnemy(args, level);
-                        break;
-                    case ENDPOINT:
-                        generateEndpoint(args, level);
-                        break;
-                    case MOV_PLAT:
-                        generateMovingPlateform(args, level);
-                        break;
-                    case STARTPOINT:
-                        generateStartpoint(args, level);
-                        break;
-                    default:
+                if (type != null) {
+                    switch (type) {
+                        case FIX_PLAT:
+                            generateFixedPlateform(args, level);
+                            break;
+                        case ENNEMY:
+                            generateEnemy(args, level);
+                            break;
+                        case ENDPOINT:
+                            generateEndpoint(args, level);
+                            break;
+                        case MOV_PLAT:
+                            generateMovingPlateform(args, level);
+                            break;
+                        case STARTPOINT:
+                            generateStartpoint(args, level);
+                            break;
+                        default:
 
+                    }
+                } else {
+                    throw new Exception("Invalid file level format");
                 }
             }
         } catch (Exception e) {
@@ -77,10 +80,10 @@ public class LevelLoader {
     }
 
     private static void generateFixedPlateform(String[] args, LevelStructure level) throws Exception {
-         float posX = Float.parseFloat(args[0]);
-         float posY = Float.parseFloat(args[1]);
-         verifyFloat(posX);
-         verifyFloat(posY);
+        float posX = Float.parseFloat(args[0]);
+        float posY = Float.parseFloat(args[1]);
+        verifyFloat(posX);
+        verifyFloat(posY);
         level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY)));
     }
 
@@ -110,7 +113,7 @@ public class LevelLoader {
     }
 
     private static void verifyFloat(float pos) throws Exception {
-        if (pos < 0 || pos > 10){
+        if (pos < 0 || pos > 10) {
             throw new Exception("Invalid object placement in the level");
         }
     }
