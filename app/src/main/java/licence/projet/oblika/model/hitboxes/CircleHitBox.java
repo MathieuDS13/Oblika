@@ -18,4 +18,14 @@ public class CircleHitBox implements HitBox {
     public double getRadius() {
         return radius;
     }
+
+    private float distance (Point2D point){
+        return(float) Math.sqrt(Math.pow(point.getX() - center.getX(),2)+ Math.pow(point.getY() - center.getY(),2));
+    }
+
+    @Override
+    public boolean contains(Point2D point) {
+        if(distance(point) <= radius) return true;
+        return false;
+    }
 }
