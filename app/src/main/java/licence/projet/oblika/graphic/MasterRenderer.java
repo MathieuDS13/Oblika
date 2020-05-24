@@ -21,6 +21,7 @@ public class MasterRenderer {
     private float ratio;
 
     private HitboxRenderer hitboxRenderer;
+    private BackgroundRenderer backgroundRenderer;
 
     public MasterRenderer() {
         viewMatrix = Matrix.mat4GenIdentity();
@@ -29,6 +30,7 @@ public class MasterRenderer {
 
         try {
             hitboxRenderer = new HitboxRenderer();
+            backgroundRenderer = new BackgroundRenderer();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,6 +70,10 @@ public class MasterRenderer {
         for(RectangleHitBox hitbox : hitboxes) {
             hitboxRenderer.render(hitbox);
         }
+    }
+
+    public void background() {
+        backgroundRenderer.render();
     }
 
     public void finish() {

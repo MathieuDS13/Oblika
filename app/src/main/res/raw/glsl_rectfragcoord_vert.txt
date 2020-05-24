@@ -1,0 +1,13 @@
+#version 300 es
+precision mediump float;
+
+layout(location = 0) in vec2 vertex;
+out vec2 fragCood;
+
+layout(location = 0) uniform mat4 VP;
+layout(location = 1) uniform mat4 position;
+
+void main() {
+    gl_Position = VP * position * vec4(vertex, -0.5, 1.0);
+    fragCood = gl_Position;
+}
