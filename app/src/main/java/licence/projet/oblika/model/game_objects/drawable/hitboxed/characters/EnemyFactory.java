@@ -1,4 +1,4 @@
-package licence.projet.oblika.model.drawable.hitboxed.characters;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
 import licence.projet.oblika.model.Point2D;
 

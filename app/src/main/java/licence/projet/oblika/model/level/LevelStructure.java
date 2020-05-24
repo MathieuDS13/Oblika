@@ -1,14 +1,13 @@
 package licence.projet.oblika.model.level;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import licence.projet.oblika.model.Point2D;
-import licence.projet.oblika.model.drawable.hitboxed.characters.Enemy;
-import licence.projet.oblika.model.drawable.hitboxed.characters.MainCharacter;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.FixedPlatform;
-import licence.projet.oblika.model.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 
 public class LevelStructure {
 

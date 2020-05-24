@@ -1,4 +1,4 @@
-package licence.projet.oblika.model.drawable.hitboxed.platforms;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms;
 
 import licence.projet.oblika.model.Point2D;
 
@@ -15,11 +15,11 @@ public class PlatformFactory {
     }
 
     public MovingPlatform CreateVerticalMovingPlatform(Point2D position){
-        return new MovingPlatform(verticalPlatformTextureID, position, true);
+        return new MovingPlatform(verticalPlatformTextureID, position, true, (float) 1.0);
     }
 
     public MovingPlatform CreateHorizontalMovingPlatform(Point2D position){
-        return new MovingPlatform(horizontalPlatformTextureID, position, false);
+        return new MovingPlatform(horizontalPlatformTextureID, position, false, (float) 1.0);
     }
 
     public FixedPlatform CreateFixedPlatform(Point2D position){

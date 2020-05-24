@@ -3,6 +3,7 @@ package licence.projet.oblika.engine;
 import java.util.ArrayList;
 
 import licence.projet.oblika.Time;
+import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
@@ -30,6 +31,7 @@ public class Game {
 
     public void update() {
         // calcule de la physique toussa toussa
+        System.out.println(AccelerometerListener.getX() + " X " + AccelerometerListener.getY() + " Y ");
     }
 
     public void draw() {

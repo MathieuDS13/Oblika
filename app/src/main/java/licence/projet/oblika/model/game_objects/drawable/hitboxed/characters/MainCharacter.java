@@ -1,10 +1,11 @@
-package licence.projet.oblika.model.drawable.hitboxed.characters;
+package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
+import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
-public class MainCharacter implements Character {
+public class MainCharacter implements Character, GameObject {
 
     private RectangleHitBox hitBox;
     private Point2D position;
@@ -29,5 +30,10 @@ public class MainCharacter implements Character {
     @Override
     public HitBox getHitBox() {
         return hitBox;
+    }
+
+    @Override
+    public void update(){
+
     }
 }

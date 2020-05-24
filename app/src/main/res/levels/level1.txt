@@ -4,8 +4,8 @@ FIX_PLAT
 1.0, 4.0, textureID
 /
 MOV_PLAT
-5.0, 7.0, textureID, false
-8.0.0, 9.0, textureID, true
+5.0, 7.0, textureID, false, 3.0
+8.0.0, 9.0, textureID, true, 4.0
 /
 STARTPOINT
 7.0, 10.0
