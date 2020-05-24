@@ -20,6 +20,11 @@ public class RectangleHitBox implements HitBox {
     }
 
     public boolean contains (Point2D point){
-        //RETOURNE SI UN POINT EST DANS LE RECTANGLE
+        if(topLeft.getX() <= point.getX() && topLeft.getY() <= point.getY()) {
+            if (botRight.getX() >= point.getX() && botRight.getY() >= point.getY()) {
+                return true;
+            }
+        }
+         return false;
     }
 }
