@@ -44,6 +44,8 @@ public class Game {
 
         renderer.hitboxes(testHitBoxList);
 
+        renderer.background();
+
         renderer.finish();
     }
 }
