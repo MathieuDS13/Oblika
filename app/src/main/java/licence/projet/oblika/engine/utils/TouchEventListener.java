@@ -8,6 +8,7 @@ public class TouchEventListener implements View.OnTouchListener {
     private static float y = -1;
     private static boolean rightSideTouched = false;
     private static boolean leftSideTouched = false;
+    private static boolean jump = false;
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -17,7 +18,7 @@ public class TouchEventListener implements View.OnTouchListener {
         On attribut la valeur de x et y de l'envent lorsque l'action du toucher vient de commencer,
         vient de se terminer ou à commencer mais à bouger
          */
-        if(action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE  ){
+        if(action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE ){
 
             x = motionEvent.getX();
             y = motionEvent.getY();
@@ -25,7 +26,9 @@ public class TouchEventListener implements View.OnTouchListener {
             rightSideTouched = x > view.getWidth() /2;
             return true;
         }
-        if(action == MotionEvent.ACTION_UP){
+        if( action == MotionEvent.ACTION_POINTER_DOWN) jump = true;
+        if (action == MotionEvent.ACTION_POINTER_UP) jump = false;
+        if(action == MotionEvent.ACTION_UP ) {
             x = -1;
             y = -1;
             rightSideTouched = false;
