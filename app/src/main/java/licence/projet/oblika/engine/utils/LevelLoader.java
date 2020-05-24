@@ -93,7 +93,7 @@ public class LevelLoader {
     private static void generateMovingPlateform(String[] args, LevelStructure level) {
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
-        boolean isVertical = Boolean.parseBoolean(args[2]);
+        boolean isVertical = Boolean.parseBoolean(args[3]);
         level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical));
     }
 
