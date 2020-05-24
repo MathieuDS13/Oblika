@@ -25,7 +25,8 @@ public class LevelLoader {
         LevelLoader.context = context;
     }
 
-    static LevelStructure parseLevel(String levelName, int screenHeight, int screenWidth) {
+    static LevelStructure parseLevel(String levelName) {
+
         LevelStructure level = new LevelStructure();
 
         int id = context.getResources().getIdentifier(levelName, "levels", context.getPackageName());
@@ -48,7 +49,6 @@ public class LevelLoader {
                 }
 
                 String[] args = line.split(splitter);
-
                 switch (type) {
                     case FIX_PLAT:
                         generateFixedPlateform(args, level);
@@ -69,16 +69,18 @@ public class LevelLoader {
 
                 }
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return level;
     }
 
-    private static void generateFixedPlateform(String[] args, LevelStructure level) {
+    private static void generateFixedPlateform(String[] args, LevelStructure level) throws Exception {
          float posX = Float.parseFloat(args[0]);
          float posY = Float.parseFloat(args[1]);
+         verifyFloat(posX);
+         verifyFloat(posY);
         level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY)));
     }
 
@@ -90,17 +92,27 @@ public class LevelLoader {
         //TODO le point de sortie n'existe pas encore, il s'agit d'un rectangle avec une hitbox à atteindre
     }
 
-    private static void generateMovingPlateform(String[] args, LevelStructure level) {
+    private static void generateMovingPlateform(String[] args, LevelStructure level) throws Exception {
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
+        verifyFloat(posX);
+        verifyFloat(posY);
         boolean isVertical = Boolean.parseBoolean(args[3]);
         level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical));
     }
 
-    private static void generateStartpoint(String[] args, LevelStructure level) {
+    private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
+        verifyFloat(posX);
+        verifyFloat(posY);
         level.setStart(new Point2D(posX, posY));
+    }
+
+    private static void verifyFloat(float pos) throws Exception {
+        if (pos < 0 || pos > 10){
+            throw new Exception("Invalid object placement in the level");
+        }
     }
 
 }
