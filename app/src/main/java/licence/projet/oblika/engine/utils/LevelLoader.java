@@ -90,6 +90,7 @@ public class LevelLoader {
     }
 
     private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
+        //format : posX, posY, TextureID
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);
@@ -99,6 +100,7 @@ public class LevelLoader {
     }
 
     private static void generateEndpoint(String[] args, LevelStructure level) throws Exception {
+        //format : posX, posY, TextureID
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);
