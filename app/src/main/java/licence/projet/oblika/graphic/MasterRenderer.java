@@ -7,6 +7,7 @@ import java.util.List;
 import licence.projet.oblika.graphic.helper.Matrix;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MasterRenderer {
@@ -20,7 +21,8 @@ public class MasterRenderer {
     private float viewportHeight;
     private float ratio;
 
-    private HitboxRenderer hitboxRenderer;
+    //private HitboxRenderer hitboxRenderer;
+    private MovingPlateformeRenderer movingPlateformeRenderer;
     private BackgroundRenderer backgroundRenderer;
 
     public MasterRenderer() {
@@ -29,7 +31,8 @@ public class MasterRenderer {
         vpMatrix = Matrix.mat4GenIdentity();
 
         try {
-            hitboxRenderer = new HitboxRenderer();
+            //hitboxRenderer = new HitboxRenderer();
+            movingPlateformeRenderer = new MovingPlateformeRenderer();
             backgroundRenderer = new BackgroundRenderer();
         } catch (Exception e) {
             e.printStackTrace();
@@ -65,10 +68,18 @@ public class MasterRenderer {
         Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
     }
 
-    public void hitboxes(List<RectangleHitBox> hitboxes) {
+    /*public void hitboxes(List<RectangleHitBox> hitboxes) {
         hitboxRenderer.prepare(vpMatrix);
         for (RectangleHitBox hitbox : hitboxes) {
             hitboxRenderer.render(hitbox);
+        }
+    }*/
+
+    public void movingPlatforms(List<MovingPlatform> movingPlatforms) {
+        movingPlateformeRenderer.prepare(vpMatrix);
+
+        for(MovingPlatform mp : movingPlatforms) {
+            movingPlateformeRenderer.render(mp);
         }
     }
 

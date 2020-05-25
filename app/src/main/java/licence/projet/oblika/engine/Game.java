@@ -52,7 +52,7 @@ public class Game {
 
         // renderer.camera(camera);
 
-        renderer.hitboxes(testHitBoxList);
+        renderer.movingPlatforms(testMovingPlatform);
 
         renderer.background();
 
