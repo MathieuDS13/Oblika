@@ -64,6 +64,7 @@ public class LevelStructure {
 
     public void setEndPoint(Point2D end) {
         this.endPoint = new EndPoint(end);
+        gameObjects.add(endPoint);
     }
 
     public void setLevelName(String levelName) {
