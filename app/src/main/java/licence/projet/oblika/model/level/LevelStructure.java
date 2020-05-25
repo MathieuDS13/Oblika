@@ -62,8 +62,8 @@ public class LevelStructure {
         return endPoint;
     }
 
-    public void setEndPoint(Point2D end) {
-        this.endPoint = new EndPoint(end);
+    public void setEndPoint(Point2D end, String texture) {
+        this.endPoint = new EndPoint(end, texture);
         gameObjects.add(endPoint);
     }
 
