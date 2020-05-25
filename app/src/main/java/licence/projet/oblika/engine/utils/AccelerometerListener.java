@@ -23,11 +23,11 @@ public class AccelerometerListener implements SensorEventListener {
     }
 
     public static float getX() {
-        return x;
+        return y;
     }
 
     public static float getY() {
-        return y;
+        return -x;
     }
 
     public static float getZ() {

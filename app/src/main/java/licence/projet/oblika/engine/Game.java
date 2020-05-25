@@ -1,15 +1,12 @@
 package licence.projet.oblika.engine;
 
-import android.text.method.Touch;
-
 import java.util.ArrayList;
-
-import licence.projet.oblika.Time;
-import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class Game {
@@ -17,6 +14,7 @@ public class Game {
 
     private Camera camera;
 
+    private ArrayList<MovingPlatform> testMovingPlatform;
     private ArrayList<RectangleHitBox> testHitBoxList;
 
     public Game() {
@@ -24,8 +22,19 @@ public class Game {
 
         // camera = new ???();
         //TODO charger le niveau demandé
-        testHitBoxList = new ArrayList();
-        testHitBoxList.add(new RectangleHitBox(new Point2D(0, 1), new Point2D(1, 0)));
+
+        testMovingPlatform = new ArrayList<>();
+        testHitBoxList = new ArrayList<>();
+
+        MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-3, -1), true, 3);
+        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(-1, 1), false, 4);
+
+        testMovingPlatform.add(testHorizontal);
+        testMovingPlatform.add(testVertical);
+
+        for(MovingPlatform movingPlatform : testMovingPlatform){
+            testHitBoxList.add((RectangleHitBox) movingPlatform.getHitBox());
+        }
     }
 
     public MasterRenderer getRenderer() {
@@ -33,8 +42,10 @@ public class Game {
     }
 
     public void update() {
+        for(MovingPlatform movingPlatform : testMovingPlatform){
+            movingPlatform.update();
+        }
         // calcule de la physique toussa toussa
-        System.out.println("Jumping : " + TouchEventListener.isJumping());
     }
 
     public void draw() {

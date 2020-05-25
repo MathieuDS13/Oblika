@@ -5,4 +5,7 @@ import licence.projet.oblika.model.Point2D;
 public interface HitBox {
     public boolean contains(Point2D point);
 
+    Point2D getTopLeft();
+    Point2D getBotRight();
+
 }
