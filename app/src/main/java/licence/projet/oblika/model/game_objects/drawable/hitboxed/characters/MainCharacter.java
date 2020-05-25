@@ -1,12 +1,10 @@
 package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
-import android.text.method.Touch;
-
 import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.TouchEventListener;
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
-import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MainCharacter implements Character, GameObject {
