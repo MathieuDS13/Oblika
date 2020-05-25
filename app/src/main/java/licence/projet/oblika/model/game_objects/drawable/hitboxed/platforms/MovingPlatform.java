@@ -2,9 +2,9 @@ package licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms;
 
 import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.AccelerometerListener;
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
-import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MovingPlatform implements Platform, GameObject {
@@ -15,12 +15,12 @@ public class MovingPlatform implements Platform, GameObject {
     private boolean isVertical;
     private HitBox hitBox;
     private float range;
-    private float slidingSpeed = 0.7f;
+    private float slidingSpeed = 1f;
 
     public MovingPlatform(String textureID, Point2D position, boolean isVertical, float range) {
         this.textureID = textureID;
         this.position = position;
-        this.startingPosition = position;
+        this.startingPosition = new Point2D(position.getX(), position.getY());
         this.isVertical = isVertical;
         this.range = range;
         generateHitBox();

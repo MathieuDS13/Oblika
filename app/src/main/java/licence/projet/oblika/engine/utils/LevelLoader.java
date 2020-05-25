@@ -80,6 +80,7 @@ public class LevelLoader {
     }
 
     private static void generateFixedPlateform(String[] args, LevelStructure level) throws Exception {
+        //format : posX, posY, textureID
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);
@@ -100,6 +101,7 @@ public class LevelLoader {
     }
 
     private static void generateMovingPlateform(String[] args, LevelStructure level) throws Exception {
+        //format : posX, posY, textureID, isVertical, range
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         float range = Float.parseFloat(args[4]);
@@ -111,6 +113,7 @@ public class LevelLoader {
     }
 
     private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {
+        //format : posX, posY
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);

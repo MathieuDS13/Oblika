@@ -3,7 +3,6 @@ package licence.projet.oblika.engine.utils;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 
 public class AccelerometerListener implements SensorEventListener {

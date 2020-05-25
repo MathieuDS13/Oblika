@@ -1,12 +1,10 @@
 package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
-import android.text.method.Touch;
-
 import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.TouchEventListener;
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
-import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MainCharacter implements Character, GameObject {
@@ -27,7 +25,7 @@ public class MainCharacter implements Character, GameObject {
     }
 
     @Override
-    public Point2D getPosition(){
+    public Point2D getPosition() {
         return this.position;
     }
 
@@ -42,14 +40,16 @@ public class MainCharacter implements Character, GameObject {
     }
 
     @Override
-    public void update(){
-        if(TouchEventListener.isRightSideTouched()) position.setX(position.getX() + speed * Time.delta);
-        if(TouchEventListener.isLeftSideTouched()) position.setX(position.getX() + speed * Time.delta);
-        if(!isGrounded){
+    public void update() {
+        if (TouchEventListener.isRightSideTouched())
+            position.setX(position.getX() + speed * Time.delta);
+        if (TouchEventListener.isLeftSideTouched())
+            position.setX(position.getX() + speed * Time.delta);
+        if (!isGrounded) {
             //Si le joueur est en l'air lui applique la gravité pour le faire redescendre
             position.setY(position.getY() - gravity * Time.delta);
         }
-        if(TouchEventListener.isJumping() && isGrounded) {
+        if (TouchEventListener.isJumping() && isGrounded) {
             //TODO calculer la physique du saut OSKUR
         }
         //TODO ces putains de collisions je sais pas comment les calculer, physique de merde

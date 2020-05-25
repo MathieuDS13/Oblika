@@ -1,12 +1,11 @@
 package licence.projet.oblika.engine;
 
 import java.util.ArrayList;
-import licence.projet.oblika.engine.utils.TouchEventListener;
+
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class Game {
@@ -26,8 +25,8 @@ public class Game {
         testMovingPlatform = new ArrayList<>();
         testHitBoxList = new ArrayList<>();
 
-        MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-3, -1), true, 3);
-        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(-1, 1), false, 4);
+        MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-3, -1), true, 0.5f);
+        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(-1, 1), false, 0.5f);
 
         testMovingPlatform.add(testHorizontal);
         testMovingPlatform.add(testVertical);

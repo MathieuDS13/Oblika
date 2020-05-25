@@ -67,7 +67,7 @@ public class MasterRenderer {
 
     public void hitboxes(List<RectangleHitBox> hitboxes) {
         hitboxRenderer.prepare(vpMatrix);
-        for(RectangleHitBox hitbox : hitboxes) {
+        for (RectangleHitBox hitbox : hitboxes) {
             hitboxRenderer.render(hitbox);
         }
     }
