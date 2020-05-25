@@ -25,8 +25,8 @@ public class BackgroundRenderer {
     }
 
     public void render() {
-        float cibleX = AccelerometerListener.getY() * 0.02f;
-        float cibleY = -AccelerometerListener.getX() * 0.02f;
+        float cibleX = -AccelerometerListener.getY() * 0.02f;
+        float cibleY = AccelerometerListener.getX() * 0.02f;
 
         if(cibleX < 0.05 && cibleX > -0.05) cibleX = 0;
         if(cibleY < 0.05 && cibleY > -0.05) cibleY = 0;
