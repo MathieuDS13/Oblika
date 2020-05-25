@@ -23,6 +23,15 @@ public class  MainActivity extends Activity {
                 startActivity(activity2Intent);
             }
         });
+
+        Button buttonPrefActivity = findViewById(R.id.buttonPrefActivity);
+        buttonPrefActivity.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), PreferencesActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
     }
 
 }
