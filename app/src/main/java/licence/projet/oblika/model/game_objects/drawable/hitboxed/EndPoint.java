@@ -9,9 +9,9 @@ public class EndPoint implements GameObject, HitBoxed {
 
     HitBox hitBox;
     Point2D endPoint;
-    String texture;
+    String texture ="A DEFIBIR";
 
-    public EndPoint(Point2D point, String texture) {
+    public EndPoint(Point2D point) {
         this.endPoint = point;
         this.texture = texture;
         Point2D point2 = new Point2D(point.getX()+0.5f, point.getY() + 0.5f);

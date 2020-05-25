@@ -3,9 +3,9 @@ package licence.projet.oblika.model.level;
 import java.util.ArrayList;
 import java.util.List;
 
-import licence.projet.oblika.engine.Game;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
@@ -16,11 +16,12 @@ public class LevelStructure {
     String levelName;
     MainCharacter mainCharacter;
     Point2D start;
-    Point2D end;
+    EndPoint endPoint;
     List<MovingPlatform> movingPlatformList;
     List<FixedPlatform> fixedPlatformList;
     List<Enemy> enemyList;
     List<GameObject> gameObjects;
+
 
     public void LevelStructure() {
         this.levelName = "";
@@ -57,12 +58,12 @@ public class LevelStructure {
         this.start = start;
     }
 
-    public Point2D getEnd() {
-        return end;
+    public EndPoint getEndPoint() {
+        return endPoint;
     }
 
-    public void setEnd(Point2D end) {
-        this.end = end;
+    public void setEndPoint(Point2D end) {
+        this.endPoint = new EndPoint(end);
     }
 
     public void setLevelName(String levelName) {
