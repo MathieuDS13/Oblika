@@ -1,12 +1,20 @@
 #version 300 es
 precision mediump float;
 
-
-//const vec3 colorbg = vec3(0.184, 0.208, 0.259);
+/*
 const vec3 colorbg = vec3(0.98, 0.98, 1);
 const vec3 color1 = vec3(1, 0.42, 0.506);
 const vec3 color2 = vec3(1, 0.498, 0.314);
 const vec3 color3 = vec3(0.925, 0.8, 0.408);
+*/
+
+const vec3 colorbg = vec3(0.184, 0.208, 0.259);
+const vec3 color1 = vec3(0.403, 0.45, 0.505);
+const vec3 color2 = vec3(0.355, 0.39, 0.449);
+const vec3 color3 = vec3(0.241, 0.276, 0.335);
+
+
+
 
 
 out vec4 fragColor;
