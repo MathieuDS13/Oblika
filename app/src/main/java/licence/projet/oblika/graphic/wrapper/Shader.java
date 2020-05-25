@@ -96,6 +96,10 @@ public class Shader {
         GLES30.glUniform1f(index, f);
     }
 
+    public void sendVec2(int index, float[] vec) {
+        GLES30.glUniform2fv(index, 1, vec, 0);
+    }
+
     public void sendMat4(int index, float[] mat) {
         GLES30.glUniformMatrix4fv(index, 1,false, mat, 0);
     }
