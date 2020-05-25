@@ -23,7 +23,7 @@ public class Game {
         renderer = new MasterRenderer();
 
         // camera = new ???();
-
+        //TODO charger le niveau demandé
         testHitBoxList = new ArrayList();
         testHitBoxList.add(new RectangleHitBox(new Point2D(0, 1), new Point2D(1, 0)));
     }
@@ -34,7 +34,7 @@ public class Game {
 
     public void update() {
         // calcule de la physique toussa toussa
-        System.out.println("R " + TouchEventListener.isRightSideTouched() + " L " + TouchEventListener.isLeftSideTouched());
+        System.out.println("Jumping : " + TouchEventListener.isJumping());
     }
 
     public void draw() {
