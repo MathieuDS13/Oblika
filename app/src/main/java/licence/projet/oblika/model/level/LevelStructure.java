@@ -3,7 +3,9 @@ package licence.projet.oblika.model.level;
 import java.util.ArrayList;
 import java.util.List;
 
+import licence.projet.oblika.engine.Game;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
@@ -18,24 +20,29 @@ public class LevelStructure {
     List<MovingPlatform> movingPlatformList;
     List<FixedPlatform> fixedPlatformList;
     List<Enemy> enemyList;
+    List<GameObject> gameObjects;
 
     public void LevelStructure() {
         this.levelName = "";
         this.fixedPlatformList = new ArrayList<>();
         this.movingPlatformList = new ArrayList<>();
         this.enemyList = new ArrayList<>();
+        this.gameObjects = new ArrayList<>();
     }
 
     public void addEnemy(Enemy enemy) {
         enemyList.add(enemy);
+        gameObjects.add(enemy);
     }
 
     public void addMovingPlatformList(MovingPlatform platform) {
         movingPlatformList.add(platform);
+        gameObjects.add(platform);
     }
 
     public void addFixedPlatformList(FixedPlatform platform) {
         fixedPlatformList.add(platform);
+        gameObjects.add(platform);
     }
 
     public void setMainCharacter(MainCharacter mainCharacter) {
@@ -80,5 +87,9 @@ public class LevelStructure {
 
     public List<Enemy> getEnemyList() {
         return enemyList;
+    }
+
+    public List<GameObject> getGameObjects(){
+        return this.gameObjects;
     }
 }

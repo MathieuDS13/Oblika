@@ -13,22 +13,25 @@ public class TouchEventListener implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         int action = motionEvent.getAction();
-
+        jump = false;
         /*
         On attribut la valeur de x et y de l'envent lorsque l'action du toucher vient de commencer,
         vient de se terminer ou à commencer mais à bouger
          */
-        if(action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE ){
+        if (action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE) {
 
             x = motionEvent.getX();
             y = motionEvent.getY();
-            leftSideTouched = x < view.getWidth()/2;
-            rightSideTouched = x > view.getWidth() /2;
+            leftSideTouched = x < view.getWidth() / 2;
+            rightSideTouched = x > view.getWidth() / 2;
+
+            if (motionEvent.getPointerCount() >= 2) {
+                jump = true;
+            } else jump = false;
             return true;
         }
-        if( action == MotionEvent.ACTION_POINTER_DOWN) jump = true;
-        if (action == MotionEvent.ACTION_POINTER_UP) jump = false;
-        if(action == MotionEvent.ACTION_UP ) {
+
+        if (action == MotionEvent.ACTION_UP) {
             x = -1;
             y = -1;
             rightSideTouched = false;
@@ -45,13 +48,17 @@ public class TouchEventListener implements View.OnTouchListener {
         return y;
     }
 
-    public static boolean isRightSideTouched(){
+    public static boolean isRightSideTouched() {
         return rightSideTouched;
     }
 
-    public static boolean isLeftSideTouched(){
+    public static boolean isLeftSideTouched() {
         return leftSideTouched;
     }
 
-    
+    public static boolean isJumping() {
+        return jump;
+    }
+
+
 }

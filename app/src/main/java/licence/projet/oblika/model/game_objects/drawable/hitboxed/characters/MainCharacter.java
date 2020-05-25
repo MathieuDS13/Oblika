@@ -15,6 +15,10 @@ public class MainCharacter implements Character, GameObject {
     private Point2D position;
     private String textureID;
     private float speed = 0.08f;
+    private float height = 1.0f;
+    private float width = 0.2f;
+    private float gravity = 0.1f;
+    private boolean isGrounded = true; //défini si le joueur est sur une plateforme
 
     public MainCharacter(RectangleHitBox hitBox, Point2D position, String textureID) {
         this.hitBox = hitBox;
@@ -41,8 +45,13 @@ public class MainCharacter implements Character, GameObject {
     public void update(){
         if(TouchEventListener.isRightSideTouched()) position.setX(position.getX() + speed * Time.delta);
         if(TouchEventListener.isLeftSideTouched()) position.setX(position.getX() + speed * Time.delta);
-
-        //TODO le faire sauter
+        if(!isGrounded){
+            //Si le joueur est en l'air lui applique la gravité pour le faire redescendre
+            position.setY(position.getY() - gravity * Time.delta);
+        }
+        if(TouchEventListener.isJumping() && isGrounded) {
+            //TODO calculer la physique du saut OSKUR
+        }
         //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
     }
 }

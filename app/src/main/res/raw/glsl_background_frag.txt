@@ -15,8 +15,8 @@ in vec2 uv;
 layout(location = 0) uniform vec2 pos;
 
 float rectangleIn(vec2 uv, vec2 pos, float width, float height) {
-    width -= 0.05;
-    height-= 0.05;
+    width -= 0.2;
+    height-= 0.2;
 
 	float t = 1.0;
 	if ((uv.x > pos.x - width / 2.0) && (uv.x < pos.x + width / 2.0)
@@ -40,10 +40,10 @@ float rectangle(vec2 uv, vec2 pos, float width, float height) {
 void main() {
     vec3 finalColor = colorbg;
 
-	float r = rectangle(uv, pos * 0.7, 0.5, 0.5);
+	float r = rectangle(uv, pos * 0.7, 0.3, 0.3);
     finalColor = mix(finalColor, color3, r);
 
-    r = rectangle(uv, pos * 0.4, 0.7, 0.7);
+    r = rectangle(uv, pos * 0.4, 0.6, 0.6);
     finalColor = mix(finalColor, color2, r);
 
     r = rectangle(uv, pos * 0.1, 0.9, 0.9);
