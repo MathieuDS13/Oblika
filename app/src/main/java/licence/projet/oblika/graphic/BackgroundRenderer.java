@@ -1,6 +1,5 @@
 package licence.projet.oblika.graphic;
 
-import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.graphic.helper.Mesh;
 import licence.projet.oblika.graphic.wrapper.Shader;
@@ -12,7 +11,6 @@ public class BackgroundRenderer {
 
     private VAO rectVAO;
     private float[] pos;
-    private float moveSpeed = 1f;
 
     public BackgroundRenderer() throws Exception {
         shader = new Shader("glsl_background_vert", "glsl_background_frag", "background");
@@ -27,13 +25,13 @@ public class BackgroundRenderer {
     }
 
     public void render() {
-        float cibleX = AccelerometerListener.getY() * 0.1f;
-        float cibleY = -AccelerometerListener.getX() * 0.1f;
+        float cibleX = AccelerometerListener.getY() * 0.02f;
+        float cibleY = -AccelerometerListener.getX() * 0.02f;
 
         if(cibleX < 0.05 && cibleX > -0.05) cibleX = 0;
         if(cibleY < 0.05 && cibleY > -0.05) cibleY = 0;
 
-        double angle = Math.atan2((cibleY-pos[1]), (cibleX-pos[0]));
+        double angle = Math.atan2(cibleY - pos[1], cibleX - pos[0]);
         double dist = Math.sqrt(Math.pow((cibleX-pos[0]), 2) +  Math.pow((cibleY-pos[1]), 2));
 
         pos[0] += Math.cos(angle) * dist * 0.02;
