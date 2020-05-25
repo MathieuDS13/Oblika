@@ -92,7 +92,11 @@ public class LevelLoader {
     }
 
     private static void generateEndpoint(String[] args, LevelStructure level) {
-        //TODO le point de sortie n'existe pas encore, il s'agit d'un rectangle avec une hitbox à atteindre
+        float posX = Float.parseFloat(args[0]);
+        float posY = Float.parseFloat(args[1]);
+        String texture = args[2];
+        Point2D point = new Point2D(posX,posY);
+        level.setEndPoint(point, texture);
     }
 
     private static void generateMovingPlateform(String[] args, LevelStructure level) throws Exception {
