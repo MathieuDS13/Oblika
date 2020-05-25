@@ -11,6 +11,7 @@ public class MovingPlatform implements Platform, GameObject {
 
     private String textureID;
     private Point2D position;
+    private Point2D startingPosition;
     private boolean isVertical;
     private HitBox hitBox;
     private float range;
@@ -19,6 +20,7 @@ public class MovingPlatform implements Platform, GameObject {
     public MovingPlatform(String textureID, Point2D position, boolean isVertical, float range) {
         this.textureID = textureID;
         this.position = position;
+        this.startingPosition = position;
         this.isVertical = isVertical;
         this.range = range;
     }
@@ -56,12 +58,12 @@ public class MovingPlatform implements Platform, GameObject {
     @Override
     public void update() {
         if(isVertical){
-            if(AccelerometerListener.getX() > 1.5) this.position.setX(position.getX() + slidingSpeed * Time.delta);
-            if(AccelerometerListener.getX() < -1.5) this.position.setX(position.getX() - slidingSpeed * Time.delta);
+            if(AccelerometerListener.getX() > 1.5 && position.getX() < startingPosition.getX() + range) this.position.setX(position.getX() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getX() < -1.5 && position.getX() > startingPosition.getX() - range) this.position.setX(position.getX() - slidingSpeed * Time.delta);
 
         } else {
-            if(AccelerometerListener.getY() > 1.5) this.position.setY(position.getY() + slidingSpeed * Time.delta);
-            if(AccelerometerListener.getY() < -1.5) this.position.setY(position.getY() - slidingSpeed * Time.delta);
+            if(AccelerometerListener.getY() > 1.5 && position.getY() < startingPosition.getY() + range) this.position.setY(position.getY() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getY() < -1.5 && position.getY() > startingPosition.getY() - range) this.position.setY(position.getY() - slidingSpeed * Time.delta);
         }
     }
 }
