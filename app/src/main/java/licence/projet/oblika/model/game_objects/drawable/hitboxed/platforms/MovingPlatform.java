@@ -30,20 +30,7 @@ public class MovingPlatform implements Platform, GameObject {
         return isVertical;
     }
 
-    /*public void update(float x, float y){
-        if(isVertical) {
-            position.setY(position.getY() + y);
-            hitBox.getTopLeft().setY(position.getY());
-            hitBox.getBotRight().setY(position.getY());
-        }
-        else {
-            position.setX(position.getX() + x);
-            hitBox.getTopLeft().setX(position.getX());
-            hitBox.getBotRight().setX(position.getX());
-        }
-    }*/
-
-    private void generateHitBox(){
+    private void generateHitBox() {
         Point2D topLeft = new Point2D(position.getX(), position.getY() + 0.5f);
         Point2D botRight = new Point2D(position.getX() + 1.5f, position.getY());
         hitBox = new RectangleHitBox(topLeft, botRight);
@@ -66,15 +53,19 @@ public class MovingPlatform implements Platform, GameObject {
 
     @Override
     public void update() {
-        if(isVertical){
-            if(AccelerometerListener.getY() > 1.5 && position.getY() < startingPosition.getY() + range) this.position.setY(position.getY() + slidingSpeed * Time.delta);
-            if(AccelerometerListener.getY() < -1.5 && position.getY() > startingPosition.getY() - range) this.position.setY(position.getY() - slidingSpeed * Time.delta);
+        if (isVertical) {
+            if (AccelerometerListener.getY() > 1.5 && position.getY() < startingPosition.getY() + range)
+                this.position.setY(position.getY() + slidingSpeed * Time.delta);
+            if (AccelerometerListener.getY() < -1.5 && position.getY() > startingPosition.getY() - range)
+                this.position.setY(position.getY() - slidingSpeed * Time.delta);
             hitBox.getTopLeft().setY(position.getY());
             hitBox.getBotRight().setY(position.getY() + 0.5f);
 
         } else {
-            if(AccelerometerListener.getX() > 1.5 && position.getX() < startingPosition.getX() + range) this.position.setX(position.getX() + slidingSpeed * Time.delta);
-            if(AccelerometerListener.getX() < -1.5 && position.getX() > startingPosition.getX() - range) this.position.setX(position.getX() - slidingSpeed * Time.delta);
+            if (AccelerometerListener.getX() > 1.5 && position.getX() < startingPosition.getX() + range)
+                this.position.setX(position.getX() + slidingSpeed * Time.delta);
+            if (AccelerometerListener.getX() < -1.5 && position.getX() > startingPosition.getX() - range)
+                this.position.setX(position.getX() - slidingSpeed * Time.delta);
             hitBox.getTopLeft().setX(position.getX());
             hitBox.getBotRight().setX(position.getX() + 1.5f);
         }
