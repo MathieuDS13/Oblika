@@ -3,7 +3,6 @@ package licence.projet.oblika.engine.utils;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorListener;
 import android.hardware.SensorManager;
 
 public class AccelerometerListener implements SensorEventListener {
@@ -23,11 +22,11 @@ public class AccelerometerListener implements SensorEventListener {
     }
 
     public static float getX() {
-        return x;
+        return y;
     }
 
     public static float getY() {
-        return y;
+        return -x;
     }
 
     public static float getZ() {

@@ -28,4 +28,14 @@ public class CircleHitBox implements HitBox {
         if(distance(point) <= radius) return true;
         return false;
     }
+
+    @Override
+    public Point2D getTopLeft() {
+        return null;
+    }
+
+    @Override
+    public Point2D getBotRight() {
+        return null;
+    }
 }
