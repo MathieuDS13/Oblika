@@ -11,7 +11,6 @@ public class AmisActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO ici aussi
         setContentView(R.layout.activity_amis);
     }
 }

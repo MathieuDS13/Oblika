@@ -10,7 +10,6 @@ public class UtilisateurActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO pk ca me le prend pas ce fdp
         setContentView(R.layout.activity_utilisateur);
     }
 }

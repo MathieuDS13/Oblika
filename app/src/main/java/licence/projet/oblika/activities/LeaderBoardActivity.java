@@ -13,14 +13,13 @@ public class LeaderBoardActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO ca marche pas ici non plus
         setContentView(R.layout.activity_leaderboard);
 
         Button buttonAmisdActivity = findViewById(R.id.amis);
         buttonAmisdActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), UtilisateurActivity.class);
+                Intent activity2Intent = new Intent(getApplicationContext(), AmisActivity.class);
                 startActivity(activity2Intent);
             }
         });
@@ -29,7 +28,7 @@ public class LeaderBoardActivity extends Activity {
         buttonGlobaldActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), UtilisateurActivity.class);
+                Intent activity2Intent = new Intent(getApplicationContext(), GlobalActivity.class);
                 startActivity(activity2Intent);
             }
         });
