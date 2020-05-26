@@ -15,11 +15,11 @@ public class PlatformFactory {
     }
 
     public MovingPlatform CreateVerticalMovingPlatform(Point2D position){
-        return new MovingPlatform(verticalPlatformTextureID, position, true, (float) 1.0);
+        return new MovingPlatform(verticalPlatformTextureID, position, true, 1, 1, 2);
     }
 
     public MovingPlatform CreateHorizontalMovingPlatform(Point2D position){
-        return new MovingPlatform(horizontalPlatformTextureID, position, false, (float) 1.0);
+        return new MovingPlatform(horizontalPlatformTextureID, position, false, 1, 1, 1);
     }
 
     public FixedPlatform CreateFixedPlatform(Point2D position){

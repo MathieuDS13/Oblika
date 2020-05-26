@@ -37,7 +37,7 @@ public class MovingPlateformeRenderer {
     }
 
     public void render(MovingPlatform movingPlatform) {
-        final Point2D position = movingPlatform.getPosition();
+        final Point2D position = movingPlatform.getActualPosition();
         pos[0] = position.getX();
         pos[1] = position.getY();
 

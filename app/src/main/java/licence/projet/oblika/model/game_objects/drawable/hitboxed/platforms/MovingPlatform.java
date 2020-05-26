@@ -46,8 +46,8 @@ public class MovingPlatform implements Platform, GameObject {
     }
 
     @Override
-    public Point2D getTopLeft() {
-        return topLeft;
+    public Point2D getActualPosition() {
+        return actualPosition;
     }
 
     @Override
@@ -58,18 +58,18 @@ public class MovingPlatform implements Platform, GameObject {
     @Override
     public void update() {
         if(isVertical){
-            if(AccelerometerListener.getY() > 1.5 && topLeft.getY() < actualPosition.getY() + range)
-                this.topLeft.setY(topLeft.getY() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getY() > 1.5 && actualPosition.getY() < botRight.getY() + range)
+                this.actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
 
-            if(AccelerometerListener.getY() < -1.5 && topLeft.getY() > actualPosition.getY() - range)
-                this.topLeft.setY(topLeft.getY() - slidingSpeed * Time.delta);
+            if(AccelerometerListener.getY() < -1.5 && actualPosition.getY() > topLeft.getY() - range)
+                this.actualPosition.setY(actualPosition.getY() - slidingSpeed * Time.delta);
 
         } else {
-            if(AccelerometerListener.getX() > 1.5 && topLeft.getX() < actualPosition.getX() + range)
-                this.topLeft.setX(topLeft.getX() + slidingSpeed * Time.delta);
+            if(AccelerometerListener.getX() > 1.5 && actualPosition.getX() < botRight.getX() + range)
+                this.actualPosition.setX(actualPosition.getX() + slidingSpeed * Time.delta);
 
-            if(AccelerometerListener.getX() < -1.5 && topLeft.getX() > actualPosition.getX() - range)
-                this.topLeft.setX(topLeft.getX() - slidingSpeed * Time.delta);
+            if(AccelerometerListener.getX() < -1.5 && actualPosition.getX() > topLeft.getX() - range)
+                this.actualPosition.setX(actualPosition.getX() - slidingSpeed * Time.delta);
         }
     }
 }

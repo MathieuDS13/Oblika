@@ -119,7 +119,7 @@ public class LevelLoader {
         verifyFloat(posY);
         verifyFloat(range);
         boolean isVertical = Boolean.parseBoolean(args[3]);
-        level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range) );
+        //level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range) ); TODO::Rajouter la récupération des dimensions de la plateforme
     }
 
     private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {

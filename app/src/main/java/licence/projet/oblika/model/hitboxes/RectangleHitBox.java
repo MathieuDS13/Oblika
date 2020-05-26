@@ -31,6 +31,6 @@ public class RectangleHitBox implements HitBox {
     }
 
     private boolean isPossible(Point2D topLeft, Point2D botRight){
-        return ( topLeft.getX() > botRight.getX() ) && ( topLeft.getY() > botRight.getY() );
+        return ( topLeft.getX() < botRight.getX() ) && ( topLeft.getY() > botRight.getY() );
     }
 }

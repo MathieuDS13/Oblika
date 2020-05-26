@@ -15,7 +15,7 @@ public class Enemy implements Character, GameObject {
     }
 
     @Override
-    public Point2D getTopLeft() {
+    public Point2D getActualPosition() {
         return position;
     }
 

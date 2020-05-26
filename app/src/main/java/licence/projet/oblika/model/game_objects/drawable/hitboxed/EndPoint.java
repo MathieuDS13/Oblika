@@ -29,7 +29,7 @@ public class EndPoint implements GameObject, HitBoxed {
     }
 
     @Override
-    public Point2D getTopLeft() {
+    public Point2D getActualPosition() {
         return endPoint;
     }
 
