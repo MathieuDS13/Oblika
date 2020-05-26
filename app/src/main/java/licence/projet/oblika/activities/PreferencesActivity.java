@@ -32,5 +32,14 @@ public class PreferencesActivity extends Activity {
                 startActivity(activity2Intent);
             }
         });
+
+        Button buttonLeaderBoardActivity = findViewById(R.id.buttonGameActivity3);
+        buttonLeaderBoardActivity.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), UtilisateurActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
     }
 }
