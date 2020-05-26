@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
-import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
 
 
@@ -29,7 +28,7 @@ public class LevelLoader {
 
         LevelStructure level = new LevelStructure();
 
-        int id = context.getResources().getIdentifier(levelName, "levels", context.getPackageName());
+        int id = context.getResources().getIdentifier(levelName, "raw/levels", context.getPackageName());
         InputStream is = context.getResources().openRawResource(id);
 
         InputStreamReader isReader = new InputStreamReader(is);
