@@ -26,9 +26,22 @@ public class GameActivity extends Activity {
         sensorManager.registerListener(accelerometerListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
 
         AudioHandler.init(this);
+        AudioHandler.startLoop();
         gLView = new GLView(this);
 
         setContentView(gLView);
         gLView.setOnTouchListener(touchEvent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        AudioHandler.endLoop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        AudioHandler.endLoop();
     }
 }
