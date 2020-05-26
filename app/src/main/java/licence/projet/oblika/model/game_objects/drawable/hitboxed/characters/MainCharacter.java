@@ -1,6 +1,7 @@
 package licence.projet.oblika.model.game_objects.drawable.hitboxed.characters;
 
 import licence.projet.oblika.Time;
+import licence.projet.oblika.engine.utils.AudioHandler;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
@@ -50,6 +51,7 @@ public class MainCharacter implements Character, GameObject {
             position.setY(position.getY() - gravity * Time.delta);
         }
         if (TouchEventListener.isJumping() && isGrounded) {
+            AudioHandler.playJumpSound();
             //TODO calculer la physique du saut OSKUR
         }
         //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
