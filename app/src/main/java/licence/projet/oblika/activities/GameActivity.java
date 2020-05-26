@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
 import licence.projet.oblika.engine.utils.AccelerometerListener;
+import licence.projet.oblika.engine.utils.AudioHandler;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 
 public class GameActivity extends Activity {
@@ -24,6 +25,7 @@ public class GameActivity extends Activity {
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(accelerometerListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
 
+        AudioHandler.init(this);
         gLView = new GLView(this);
 
         setContentView(gLView);
