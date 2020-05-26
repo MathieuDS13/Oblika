@@ -6,7 +6,6 @@ import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class Game {
     private MasterRenderer renderer;
@@ -24,7 +23,7 @@ public class Game {
         movingPlatforms = new ArrayList<>();
 
         MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-2f, -1f), true, 1.5f, 0.5f, 2f);
-        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(3f, 0f), false, 3f, 0.5f, 2f);
+        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(2.5f, 0f), false, 3f, 0.5f, 2f);
 
         movingPlatforms.add(testHorizontal);
         movingPlatforms.add(testVertical);
