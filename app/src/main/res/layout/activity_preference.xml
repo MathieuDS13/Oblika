@@ -4,8 +4,8 @@
 
     <Button
         android:id="@+id/buttonSound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerInParent="false"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="276dp"
@@ -13,11 +13,11 @@
 
     <Button
         android:id="@+id/buttonUtilisateur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
-        android:text="Profil utilisateur"></Button>
+        android:text="Profil utilisateur" />
 
 
 </RelativeLayout>
