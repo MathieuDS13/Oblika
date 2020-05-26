@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
@@ -88,13 +89,22 @@ public class LevelLoader {
         level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY)));
     }
 
-    private static void generateEnemy(String[] args, LevelStructure level) {
-        //TODO ajouter la génération d'ennemis selon leur type
-    }
-
-    private static void generateEndpoint(String[] args, LevelStructure level) {
+    private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
+        //format : posX, posY, TextureID
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
+        verifyFloat(posX);
+        verifyFloat(posY);
+        String texture = args[2];
+        level.addEnemy(new Enemy(texture, new Point2D(posX,posY)));
+    }
+
+    private static void generateEndpoint(String[] args, LevelStructure level) throws Exception {
+        //format : posX, posY, TextureID
+        float posX = Float.parseFloat(args[0]);
+        float posY = Float.parseFloat(args[1]);
+        verifyFloat(posX);
+        verifyFloat(posY);
         String texture = args[2];
         Point2D point = new Point2D(posX,posY);
         level.setEndPoint(point, texture);

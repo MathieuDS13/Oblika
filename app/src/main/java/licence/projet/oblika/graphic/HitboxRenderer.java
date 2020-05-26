@@ -42,10 +42,10 @@ public class HitboxRenderer {
         Point2D botRight = hitBox.getBotRight();
 
         Mesh.fill2DQuad(rectBuffer,
-                (float) topLeft.getX(), (float) topLeft.getY(),
-                (float) botRight.getX(), (float) topLeft.getY(),
-                (float) topLeft.getX(), (float) botRight.getY(),
-                (float) botRight.getX(), (float) botRight.getY()
+                topLeft.getX(), topLeft.getY(),
+                botRight.getX(), topLeft.getY(),
+                topLeft.getX(), botRight.getY(),
+                botRight.getX(), botRight.getY()
         );
 
         rectVBO.setData(rectBuffer, 0);
