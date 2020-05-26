@@ -6,7 +6,6 @@ import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class Game {
     private MasterRenderer renderer;
