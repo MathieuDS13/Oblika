@@ -23,5 +23,14 @@ public class PreferencesActivity extends Activity {
                 startActivity(activity2Intent);
             }
         });
+
+        Button buttonUtilisateurActivity = findViewById(R.id.buttonUtilisateur);
+        buttonUtilisateurActivity.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), UtilisateurActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
     }
 }
