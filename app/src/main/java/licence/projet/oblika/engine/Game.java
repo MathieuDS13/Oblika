@@ -24,7 +24,7 @@ public class Game {
         movingPlatforms = new ArrayList<>();
 
         MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-2f, -1f), true, 1.5f, 0.5f, 2f);
-        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(3f, 0f), false, 3f, 0.5f, 2f);
+        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(2.5f, 0f), false, 3f, 0.5f, 2f);
 
         movingPlatforms.add(testHorizontal);
         movingPlatforms.add(testVertical);

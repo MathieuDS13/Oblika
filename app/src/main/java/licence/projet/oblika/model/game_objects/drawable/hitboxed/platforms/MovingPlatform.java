@@ -62,7 +62,7 @@ public class MovingPlatform implements Platform, GameObject {
         if(isVertical){
             float yAcc = Math.abs(AccelerometerListener.getY()) > .2f ? AccelerometerListener.getY() * .5f : 0f;
             slidingSpeed += yAcc;
-            this.actualPosition.setY(actualPosition.getY() + slidingSpeed/13 * Time.delta);
+            this.actualPosition.setY(actualPosition.getY() + slidingSpeed/17 * Time.delta);
 
             if(actualPosition.getY() > spawnPosition.getY() + range){
                 actualPosition.setY(spawnPosition.getY() + range);
@@ -77,7 +77,7 @@ public class MovingPlatform implements Platform, GameObject {
         } else {
             float xAcc = Math.abs(AccelerometerListener.getX()) > .2f ? AccelerometerListener.getX() * .5f : 0f;
             slidingSpeed += xAcc;
-            this.actualPosition.setX(actualPosition.getX() + slidingSpeed/13 * Time.delta);
+            this.actualPosition.setX(actualPosition.getX() + slidingSpeed/17 * Time.delta);
 
             if(actualPosition.getX() > spawnPosition.getX() + range){
                 actualPosition.setX(spawnPosition.getX() + range);
