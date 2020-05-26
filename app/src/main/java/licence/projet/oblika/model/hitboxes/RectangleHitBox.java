@@ -7,8 +7,10 @@ public class RectangleHitBox implements HitBox {
     private Point2D botRight;
 
     public RectangleHitBox(Point2D topLeft, Point2D botRight){
-        this.topLeft = topLeft;
-        this.botRight = botRight;
+        if(isPossible(topLeft, botRight)){
+            this.topLeft = topLeft;
+            this.botRight = botRight;
+        }
     }
 
     public Point2D getTopLeft() {
@@ -28,14 +30,7 @@ public class RectangleHitBox implements HitBox {
          return false;
     }
 
-    /**
-     * Pour faire une hitbox rectangulaire 4 conditions :
-     * obj1.x+obj1.width>obj2.x
-     *
-     * obj1.x<obj2.x+obj2.width
-     *
-     * obj1.y+obj1.height>obj2.y
-     *
-     * obj1.y<obj2.y+obj2.height
-     */
+    private boolean isPossible(Point2D topLeft, Point2D botRight){
+        return ( topLeft.getX() > botRight.getX() ) && ( topLeft.getY() > botRight.getY() );
+    }
 }

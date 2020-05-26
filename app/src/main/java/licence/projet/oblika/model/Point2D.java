@@ -1,8 +1,8 @@
 package licence.projet.oblika.model;
 
 public class Point2D {
-    private float x;
-    private float y;
+    public float x;
+    public float y;
 
     public Point2D(float x, float y) {
         this.x = x;

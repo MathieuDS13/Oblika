@@ -29,7 +29,7 @@ public class FixedPlatform implements Platform, GameObject {
     }
 
     @Override
-    public Point2D getPosition() {
+    public Point2D getTopLeft() {
         return position;
     }
 

@@ -13,14 +13,14 @@ import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.Movi
 
 public class LevelStructure {
 
-    String levelName;
-    MainCharacter mainCharacter;
-    Point2D start;
-    EndPoint endPoint;
-    List<MovingPlatform> movingPlatformList;
-    List<FixedPlatform> fixedPlatformList;
-    List<Enemy> enemyList;
-    List<GameObject> gameObjects;
+    private String levelName;
+    private MainCharacter mainCharacter;
+    private Point2D start;
+    private EndPoint endPoint;
+    private List<MovingPlatform> movingPlatformList;
+    private List<FixedPlatform> fixedPlatformList;
+    private List<Enemy> enemyList;
+    private List<GameObject> gameObjects;
 
 
     public void LevelStructure() {

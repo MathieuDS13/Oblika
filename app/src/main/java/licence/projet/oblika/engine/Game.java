@@ -13,8 +13,7 @@ public class Game {
 
     private Camera camera;
 
-    private ArrayList<MovingPlatform> testMovingPlatform;
-    private ArrayList<RectangleHitBox> testHitBoxList;
+    private ArrayList<MovingPlatform> movingPlatforms;
 
     public Game() {
         renderer = new MasterRenderer();
@@ -22,18 +21,13 @@ public class Game {
         // camera = new ???();
         //TODO charger le niveau demandé
 
-        testMovingPlatform = new ArrayList<>();
-        testHitBoxList = new ArrayList<>();
+        movingPlatforms = new ArrayList<>();
 
-        MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-3, -1), true, 0.5f);
-        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(-1, 1), false, 0.5f);
+        MovingPlatform testVertical = new MovingPlatform("none", new Point2D(-2f, -1f), true, 1.5f, 2f, 0.5f);
+        MovingPlatform testHorizontal = new MovingPlatform("none", new Point2D(3f, 0f), false, 3f, 2f, 0.5f);
 
-        testMovingPlatform.add(testHorizontal);
-        testMovingPlatform.add(testVertical);
-
-        for(MovingPlatform movingPlatform : testMovingPlatform){
-            testHitBoxList.add((RectangleHitBox) movingPlatform.getHitBox());
-        }
+        movingPlatforms.add(testHorizontal);
+        movingPlatforms.add(testVertical);
     }
 
     public MasterRenderer getRenderer() {
@@ -41,7 +35,7 @@ public class Game {
     }
 
     public void update() {
-        for(MovingPlatform movingPlatform : testMovingPlatform){
+        for(MovingPlatform movingPlatform : movingPlatforms){
             movingPlatform.update();
         }
         // calcule de la physique toussa toussa
@@ -51,8 +45,6 @@ public class Game {
         renderer.prepare();
 
         // renderer.camera(camera);
-
-        renderer.hitboxes(testHitBoxList);
 
         renderer.background();
 
