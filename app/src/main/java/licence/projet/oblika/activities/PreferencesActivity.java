@@ -37,7 +37,7 @@ public class PreferencesActivity extends Activity {
         buttonLeaderBoardActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), UtilisateurActivity.class);
+                Intent activity2Intent = new Intent(getApplicationContext(), LeaderBoardActivity.class);
                 startActivity(activity2Intent);
             }
         });
