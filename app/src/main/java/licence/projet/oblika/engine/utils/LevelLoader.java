@@ -28,7 +28,7 @@ public class LevelLoader {
 
         LevelStructure level = new LevelStructure();
 
-        int id = context.getResources().getIdentifier(levelName, "raw/levels", context.getPackageName());
+        int id = context.getResources().getIdentifier(levelName, "raw", context.getPackageName());
         InputStream is = context.getResources().openRawResource(id);
 
         InputStreamReader isReader = new InputStreamReader(is);
