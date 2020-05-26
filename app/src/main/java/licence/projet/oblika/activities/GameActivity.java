@@ -6,9 +6,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.opengl.GLSurfaceView;
 import android.os.Bundle;
-import android.view.MotionEvent;
 
-import licence.projet.oblika.engine.Game;
 import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 
