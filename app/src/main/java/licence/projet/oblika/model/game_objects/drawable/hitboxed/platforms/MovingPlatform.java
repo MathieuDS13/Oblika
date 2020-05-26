@@ -42,6 +42,14 @@ public class MovingPlatform implements Platform, GameObject {
         hitBox = new RectangleHitBox(topLeft, botRight);
     }
 
+    public Point2D getSpawnPosition() {
+        return spawnPosition;
+    }
+
+    public float getRange() {
+        return range;
+    }
+
     @Override
     public HitBox getHitBox() {
         return hitBox;

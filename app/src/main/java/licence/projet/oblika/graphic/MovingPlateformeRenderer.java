@@ -50,6 +50,29 @@ public class MovingPlateformeRenderer {
 
         shader.sendVec2(1, pos);
         shader.sendVec2(2, size);
+        shader.sendFloat(3, 0);
+        rectVAO.draw();
+
+
+
+
+
+        final Point2D spawnPosition = movingPlatform.getSpawnPosition();
+        pos[0] = spawnPosition.getX();
+        pos[1] = spawnPosition.getY();
+
+
+        if(movingPlatform.isVertical()) {
+            size[0] = .1f;
+            size[1] = movingPlatform.getRange() * 2f;
+        } else {
+            size[1] = .1f;
+            size[0] = movingPlatform.getRange() * 2f;
+        }
+
+        shader.sendVec2(1, pos);
+        shader.sendVec2(2, size);
+        shader.sendFloat(3, 1);
         rectVAO.draw();
     }
 }
