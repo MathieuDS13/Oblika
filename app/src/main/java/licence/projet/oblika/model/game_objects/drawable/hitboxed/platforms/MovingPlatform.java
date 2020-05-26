@@ -71,5 +71,25 @@ public class MovingPlatform implements Platform, GameObject {
             if(AccelerometerListener.getX() < -1.5 && actualPosition.getX() > topLeft.getX() - range)
                 this.actualPosition.setX(actualPosition.getX() - slidingSpeed * Time.delta);
         }
+
+
+
+/*
+        if(isVertical){
+            float yAcc = Math.abs(AccelerometerListener.getY()) > .2f ? AccelerometerListener.getY() * .5f : 0f;
+
+            this.actualPosition.setY(actualPosition.getY() + yAcc * Time.delta);
+
+            if(actualPosition.getY() > range) actualPosition.setY(range);
+            else if(actualPosition.getY() < -range) actualPosition.setY(-range);
+
+        } else {
+            float xAcc = Math.abs(AccelerometerListener.getX()) > .2f ? AccelerometerListener.getX() * .5f : 0f;
+
+            this.actualPosition.setX(actualPosition.getX() + xAcc * Time.delta);
+
+            if(actualPosition.getX() > range) actualPosition.setX(range);
+            else if(actualPosition.getX() < -range) actualPosition.setX(-range);
+        }*/
     }
 }
