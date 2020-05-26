@@ -17,7 +17,7 @@ public class MovingPlatform implements Platform, GameObject {
     private boolean isVertical;
     private HitBox hitBox;
     private float range;
-    private float slidingSpeed = 1f;
+    private float slidingSpeed = 0f;
 
     public MovingPlatform(String textureID, Point2D actualPosition, boolean isVertical, float range, float height, float width) {
         this.textureID = textureID;
@@ -61,19 +61,33 @@ public class MovingPlatform implements Platform, GameObject {
     public void update() {
         if(isVertical){
             float yAcc = Math.abs(AccelerometerListener.getY()) > .2f ? AccelerometerListener.getY() * .5f : 0f;
+            slidingSpeed += yAcc;
+            this.actualPosition.setY(actualPosition.getY() + slidingSpeed/13 * Time.delta);
 
-            this.actualPosition.setY(actualPosition.getY() + yAcc * Time.delta);
+            if(actualPosition.getY() > spawnPosition.getY() + range){
+                actualPosition.setY(spawnPosition.getY() + range);
+                slidingSpeed = 0;
+            }
 
-            if(actualPosition.getY() > spawnPosition.getY() + range) actualPosition.setY(spawnPosition.getY() + range);
-            else if(actualPosition.getY() < spawnPosition.getY() - range) actualPosition.setY(spawnPosition.getY() - range);
+            else if(actualPosition.getY() < spawnPosition.getY() - range){
+                actualPosition.setY(spawnPosition.getY() - range);
+                slidingSpeed = 0;
+            }
 
         } else {
             float xAcc = Math.abs(AccelerometerListener.getX()) > .2f ? AccelerometerListener.getX() * .5f : 0f;
+            slidingSpeed += xAcc;
+            this.actualPosition.setX(actualPosition.getX() + slidingSpeed/13 * Time.delta);
 
-            this.actualPosition.setX(actualPosition.getX() + xAcc * Time.delta);
+            if(actualPosition.getX() > spawnPosition.getX() + range){
+                actualPosition.setX(spawnPosition.getX() + range);
+                slidingSpeed = 0;
+            }
 
-            if(actualPosition.getX() > spawnPosition.getX() + range) actualPosition.setX(spawnPosition.getX() + range);
-            else if(actualPosition.getX() < spawnPosition.getX() - range) actualPosition.setX(spawnPosition.getX() - range);
+            else if(actualPosition.getX() < spawnPosition.getX() - range){
+                actualPosition.setX(spawnPosition.getX() - range);
+                slidingSpeed = 0;
+            }
         }
     }
 }
