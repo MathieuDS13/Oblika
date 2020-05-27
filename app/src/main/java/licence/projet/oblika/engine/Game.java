@@ -5,6 +5,7 @@ import java.util.List;
 import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
 
@@ -14,11 +15,13 @@ public class Game {
     private Camera camera;
 
     private List<MovingPlatform> movingPlatforms;
+    private List<FixedPlatform> fixedPlateforms;
 
     public Game() {
         renderer = new MasterRenderer();
         LevelStructure level = LevelLoader.parseLevel("level1");
         movingPlatforms = level.getMovingPlatformList();
+        fixedPlateforms = level.getFixedPlatformList();
 
         // camera = new ???();
 
