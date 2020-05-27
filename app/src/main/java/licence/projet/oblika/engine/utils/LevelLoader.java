@@ -123,7 +123,8 @@ public class LevelLoader {
         float height = Float.parseFloat(args[6]);
         verifyFloat(posX);
         verifyFloat(posY);
-        boolean isVertical = Boolean.parseBoolean(args[3]);
+        boolean isVertical = (Integer.parseInt(args[3].trim()) == 1);
+        System.out.println(isVertical);
         MovingPlatform plateform = new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width);
         level.addMovingPlatformList(plateform);
     }
