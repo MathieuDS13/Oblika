@@ -55,7 +55,6 @@ public class MainCharacter implements Character, GameObject {
 
     @Override
     public void update() {
-
         if (TouchEventListener.isRightSideTouched())
             actualPosition.setX(actualPosition.getX() + speed * Time.delta);
 
@@ -74,7 +73,8 @@ public class MainCharacter implements Character, GameObject {
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
             slidingSpeed = 8f;
-            isGrounded = false;
         }
+
+        isGrounded = false;
     }
 }
