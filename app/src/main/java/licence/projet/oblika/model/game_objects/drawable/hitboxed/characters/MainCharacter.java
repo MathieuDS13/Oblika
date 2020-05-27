@@ -18,7 +18,7 @@ public class MainCharacter implements Character, GameObject {
     private float speed = 0.08f;
     private float height = 1.0f;
     private float width = 0.2f;
-    private float gravity = 0.1f;
+    private float slidingSpeed = -0.1f;
     private boolean isGrounded = true; //défini si le joueur est sur une plateforme
 
     public MainCharacter(Point2D actualPosition, String textureID) {
@@ -55,12 +55,15 @@ public class MainCharacter implements Character, GameObject {
         if (TouchEventListener.isLeftSideTouched())
             actualPosition.setX(actualPosition.getX() + speed * Time.delta);
         if (!isGrounded) {
-            //Si le joueur est en l'air lui applique la gravité pour le faire redescendre
-            actualPosition.setY(actualPosition.getY() - gravity * Time.delta);
+            slidingSpeed += -0.1f; //Gravity
+            actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
+        }
+        if(isGrounded){
+            slidingSpeed = 0;
         }
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
-            //TODO calculer la physique du saut OSKUR
+            slidingSpeed = 10;
         }
         //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
     }
