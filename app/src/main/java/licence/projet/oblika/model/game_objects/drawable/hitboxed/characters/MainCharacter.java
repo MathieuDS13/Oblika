@@ -11,7 +11,9 @@ import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 public class MainCharacter implements Character, GameObject {
 
     private RectangleHitBox hitBox;
-    private Point2D position;
+    private Point2D actualPosition;
+    private Point2D topLeft;
+    private Point2D botRight;
     private String textureID;
     private float speed = 0.08f;
     private float height = 1.0f;
@@ -19,15 +21,21 @@ public class MainCharacter implements Character, GameObject {
     private float gravity = 0.1f;
     private boolean isGrounded = true; //défini si le joueur est sur une plateforme
 
-    public MainCharacter(RectangleHitBox hitBox, Point2D position, String textureID) {
-        this.hitBox = hitBox;
-        this.position = position;
+    public MainCharacter(Point2D actualPosition, String textureID) {
+        this.topLeft = new Point2D(-width/2, height/2);
+        this.botRight = new Point2D(width/2, -height/2);
+        this.actualPosition = actualPosition;
         this.textureID = textureID;
+        generateHitBox();
+    }
+
+    protected void generateHitBox(){
+        hitBox = new RectangleHitBox(topLeft, botRight);
     }
 
     @Override
     public Point2D getActualPosition() {
-        return this.position;
+        return this.actualPosition;
     }
 
     @Override
@@ -43,12 +51,12 @@ public class MainCharacter implements Character, GameObject {
     @Override
     public void update() {
         if (TouchEventListener.isRightSideTouched())
-            position.setX(position.getX() + speed * Time.delta);
+            actualPosition.setX(actualPosition.getX() + speed * Time.delta);
         if (TouchEventListener.isLeftSideTouched())
-            position.setX(position.getX() + speed * Time.delta);
+            actualPosition.setX(actualPosition.getX() + speed * Time.delta);
         if (!isGrounded) {
             //Si le joueur est en l'air lui applique la gravité pour le faire redescendre
-            position.setY(position.getY() - gravity * Time.delta);
+            actualPosition.setY(actualPosition.getY() - gravity * Time.delta);
         }
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
