@@ -2,6 +2,7 @@ package licence.projet.oblika.engine;
 
 import java.util.List;
 
+import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
@@ -15,6 +16,10 @@ import licence.projet.oblika.model.level.LevelStructure;
 
 public class Game {
     private MasterRenderer renderer;
+
+    private GameEndListener gameEndListener;
+    private float currentEndCountdown = 0.2f;
+    private boolean listenerHaveBeenCalled = false;
 
     private Camera camera;
 
@@ -40,6 +45,10 @@ public class Game {
         return renderer;
     }
 
+    public void setGameEndListener(GameEndListener gameEndListener) {
+        this.gameEndListener = gameEndListener;
+    }
+
     public void update() {
         character.update();
 
@@ -51,6 +60,14 @@ public class Game {
         for (FixedPlatform fixedPlatform : fixedPlateforms) {
             fixedPlatform.update();
             CollisionTester.moveCharacter(character, fixedPlatform);
+        }
+
+        if(CollisionTester.characterTouchEndPoint(character, endPoint)) {
+            currentEndCountdown -= Time.delta;
+            if(currentEndCountdown < 0 && !listenerHaveBeenCalled) {
+                listenerHaveBeenCalled = true;
+                gameEndListener.run();
+            }
         }
 
         // calcule de la physique toussa toussa
