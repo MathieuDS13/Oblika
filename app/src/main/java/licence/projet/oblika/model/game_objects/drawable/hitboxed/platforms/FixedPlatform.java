@@ -1,8 +1,8 @@
 package licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms;
 
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.GameObject;
 import licence.projet.oblika.model.hitboxes.HitBox;
-import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class FixedPlatform implements Platform, GameObject {
@@ -12,17 +12,14 @@ public class FixedPlatform implements Platform, GameObject {
     private Point2D botRight;
     private Point2D actualPosition;
     private HitBox hitBox;
-    private float range;
+    private float height;
+    private float width;
 
-    public FixedPlatform(String textureID, Point2D actualPosition, float range, float height, float width) {
+    public FixedPlatform(String textureID, Point2D position, float height, float width){
         this.textureID = textureID;
-
         this.topLeft = new Point2D(-width/2, height/2);
         this.botRight = new Point2D(width/2, -height/2);
-
         this.actualPosition = actualPosition;
-
-        this.range = range;
         generateHitBox();
     }
 
