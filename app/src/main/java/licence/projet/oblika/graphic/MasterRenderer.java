@@ -11,7 +11,6 @@ import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MasterRenderer {
     public static float scale = 10f;

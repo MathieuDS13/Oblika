@@ -48,7 +48,7 @@ public class Game {
             CollisionTester.moveCharacter(character, movingPlatform);
         }
 
-        for(FixedPlatform fixedPlatform : fixedPlateforms){
+        for (FixedPlatform fixedPlatform : fixedPlateforms) {
             fixedPlatform.update();
             CollisionTester.moveCharacter(character, fixedPlatform);
         }

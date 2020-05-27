@@ -17,7 +17,7 @@ public class EndPoint implements GameObject, HitBoxed {
     public EndPoint(Point2D point, String texture) {
         this.endPoint = point;
         this.texture = texture;
-        this.hitBox = new RectangleHitBox(new Point2D(-width/2, height/2), new Point2D(width/2, -height/2));
+        this.hitBox = new RectangleHitBox(new Point2D(-width / 2, height / 2), new Point2D(width / 2, -height / 2));
     }
 
     @Override

@@ -34,7 +34,7 @@ public class MainCharacter implements Character, GameObject {
     }
 
     @Override
-    public void setGrounded(){
+    public void setGrounded() {
         isGrounded = true;
     }
 

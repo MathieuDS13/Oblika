@@ -7,7 +7,6 @@ import licence.projet.oblika.graphic.wrapper.VAO;
 import licence.projet.oblika.graphic.wrapper.VBO;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
-import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
 import licence.projet.oblika.model.hitboxes.HitBox;
 
 public class EndPointRenderer {

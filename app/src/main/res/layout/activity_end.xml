@@ -3,16 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<TextView
+    <TextView
         android:id="@+id/affichage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bravo tu as fini le niveau !"
         android:textColor="#FFFFFF"
         android:textSize="40dp"
-    android:layout_marginTop="50dp"
-        android:layout_centerHorizontal="true"
-    />
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/buttonReturn"
@@ -30,5 +29,5 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="16dp"
-        android:src="@drawable/bueno"/>
+        android:src="@drawable/bueno" />
 </RelativeLayout>
