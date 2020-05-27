@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "547865069088",
+    "firebase_url": "https://oblika-5c3b3.firebaseio.com",
+    "project_id": "oblika-5c3b3",
+    "storage_bucket": "oblika-5c3b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547865069088:android:c9cef504a9cd12e1cf5e45",
+        "android_client_info": {
+          "package_name": "licence.projet.oblika"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "547865069088-6q4dg475rut638v7dqejod568oobe2qp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "licence.projet.oblika",
+            "certificate_hash": "0503b2e7d743fbca1710d4568e17c326f8d72c00"
+          }
+        },
+        {
+          "client_id": "547865069088-u7nq0e843ihs61r1onn44pst8d7a7jj9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKF3ugHNcLVGjsA62TeMyO9t9z83XSVqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "547865069088-u7nq0e843ihs61r1onn44pst8d7a7jj9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
