@@ -124,7 +124,6 @@ public class LevelLoader {
         verifyFloat(posX);
         verifyFloat(posY);
         boolean isVertical = (Integer.parseInt(args[3].trim()) == 1);
-        System.out.println(isVertical);
         MovingPlatform plateform = new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width);
         level.addMovingPlatformList(plateform);
     }
