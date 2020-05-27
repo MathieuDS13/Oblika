@@ -7,7 +7,7 @@ import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class EndPoint implements GameObject, HitBoxed {
 
-    private final float width = 0.8f;
+    private final float width = 0.6f;
     private final float height = 1f;
 
     HitBox hitBox;
