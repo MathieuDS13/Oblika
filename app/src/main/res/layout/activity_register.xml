@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:text="Créez votre compte"
         android:textColor="#FFFFFF"
-        android:textSize="50dp" />
+        android:textSize="40dp" />
 
     <EditText
         android:id="@+id/registerEmail"
@@ -23,6 +23,18 @@
         android:textAlignment="center"
         android:textSize="25dp"
         android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true" />
+
+    <EditText
+        android:id="@+id/edPseudo"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
+        android:layout_centerHorizontal="true"
+        android:hint="Enter Pseudo"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentTop="true" />
 
     <EditText
