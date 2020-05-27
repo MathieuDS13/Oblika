@@ -76,21 +76,20 @@ public class DataBaseHandler {
     }
 
     public static void register(FirebaseUser user, String pseudo) {
-        update();
         if (DataBaseHandler.user == null) return;
         addPseudoToUser(user, pseudo);
         addNewUser(user);
+        update();
     }
 
     private static void addNewUser(FirebaseUser user) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
         User user1 = new User(pseudo, user.getEmail());
         mDatabase.child("users").child(user.getUid()).setValue(user1);
     }
 
     public static void addPseudoToUser(FirebaseUser user, String pseudo) {
         UserProfileChangeRequest request = new UserProfileChangeRequest.Builder().setDisplayName(pseudo).build();
+        user.updateProfile(request);
     }
 
     public static void update() {

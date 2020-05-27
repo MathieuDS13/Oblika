@@ -36,4 +36,6 @@ public class UtilisateurActivity extends Activity {
     private void update() {
         pseudo.setText(DataBaseHandler.getPseudo());
     }
+
+    //TODO le pseudo de l'utilisateur ne s'affiche pas pourtant il existe bien
 }

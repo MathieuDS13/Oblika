@@ -33,6 +33,11 @@ public class RegisterActivity extends Activity {
 
         mAuth = FirebaseAuth.getInstance();
 
+        if (mAuth.getCurrentUser() != null) {
+            Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(activity2Intent);
+        }
+
         Button register = findViewById(R.id.registerButton);
         Button goToLogin = findViewById(R.id.goToLogin);
         final EditText edEmail = findViewById(R.id.registerEmail);
@@ -57,7 +62,6 @@ public class RegisterActivity extends Activity {
     }
 
     private void signUp(String email, String password) {
-        //TODO vérifier le mail et le mot de passe
         boolean validInfo = false;
         final EditText edPseudo = findViewById(R.id.edPseudo);
 
@@ -75,16 +79,13 @@ public class RegisterActivity extends Activity {
                                 String pseudo = edPseudo.getText().toString();
                                 DataBaseHandler.register(user, pseudo);
                                 DataBaseHandler.setPseudo(pseudo);
-                                //TODO des trucs
                                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(activity2Intent);
-                                //TODO modifier l'UI avec les paramètres de l'utilisateur
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
-                                //TODO modifier l'UI avec les paramètres de l'utilisateur updateUI(null);
                             }
                         }
                     });
@@ -94,4 +95,5 @@ public class RegisterActivity extends Activity {
     private boolean isInfoValid(String mail, String password) {
         return (mail != null && password != null);
     }
+
 }
