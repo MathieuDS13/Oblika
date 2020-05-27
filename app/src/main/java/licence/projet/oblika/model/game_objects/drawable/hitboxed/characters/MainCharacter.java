@@ -19,7 +19,7 @@ public class MainCharacter implements Character, GameObject {
     private float height = 1.0f;
     private float width = 0.2f;
     private float slidingSpeed = -0.1f;
-    private boolean isGrounded = true; //défini si le joueur est sur une plateforme
+    private boolean isGrounded = true;
 
     public MainCharacter(Point2D actualPosition, String textureID) {
         this.topLeft = new Point2D(-width/2, height/2);
@@ -50,6 +50,12 @@ public class MainCharacter implements Character, GameObject {
 
     @Override
     public void update() {
+
+
+        //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
+
+
+
         if (TouchEventListener.isRightSideTouched())
             actualPosition.setX(actualPosition.getX() + speed * Time.delta);
         if (TouchEventListener.isLeftSideTouched())
@@ -65,6 +71,5 @@ public class MainCharacter implements Character, GameObject {
             AudioHandler.playJumpSound();
             slidingSpeed = 10;
         }
-        //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
     }
 }
