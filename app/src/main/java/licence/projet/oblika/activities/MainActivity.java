@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import licence.projet.oblika.R;
+import licence.projet.oblika.model.DataBaseHandler;
 
 public class MainActivity extends Activity {
 
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        DataBaseHandler.init(this);
 
         if (currentUser == null) {
             Intent activity2Intent = new Intent(getApplicationContext(), LoginActivity.class);
