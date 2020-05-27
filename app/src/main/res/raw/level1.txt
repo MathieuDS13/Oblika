@@ -1,11 +1,17 @@
 /
 FIX_PLAT
-2.0, 3.0, textureID
-1.0, 4.0, textureID
+2.0, 3.0, none
+1.0, 4.0, none
 /
 MOV_PLAT
-5.0, 7.0, textureID, false, 3.0
-8.0.0, 9.0, textureID, true, 4.0
+5.0, 7.0, none, false, 3.0
+8.0.0, 9.0, none, true, 4.0
 /
 STARTPOINT
 7.0, 10.0
+/
+ENDPOINT
+10.0,5.0, textureID
+/
+ENNEMY
+7.0,4.0, textureID

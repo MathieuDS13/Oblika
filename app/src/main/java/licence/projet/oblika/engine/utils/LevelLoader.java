@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Enemy;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
 
 
@@ -80,12 +81,16 @@ public class LevelLoader {
     }
 
     private static void generateFixedPlateform(String[] args, LevelStructure level) throws Exception {
-        //format : posX, posY, textureID
+        //format : posX, posY, textureID, width, height
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
+        float width = Float.parseFloat(args[3]);
+        float height = Float.parseFloat(args[4]);
         verifyFloat(posX);
         verifyFloat(posY);
-        level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY)));
+        verifyFloat(width);
+        verifyFloat(height);
+        level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY), height, width));
     }
 
     private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
@@ -110,15 +115,19 @@ public class LevelLoader {
     }
 
     private static void generateMovingPlateform(String[] args, LevelStructure level) throws Exception {
-        //format : posX, posY, textureID, isVertical, range
+        //format : posX, posY, textureID, isVertical, range, width, height
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         float range = Float.parseFloat(args[4]);
+        float width = Float.parseFloat(args[5]);
+        float height = Float.parseFloat(args[6]);
         verifyFloat(posX);
         verifyFloat(posY);
         verifyFloat(range);
+        verifyFloat(width);
+        verifyFloat(height);
         boolean isVertical = Boolean.parseBoolean(args[3]);
-        //level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range) ); TODO::Rajouter la récupération des dimensions de la plateforme
+        level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width) );
     }
 
     private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {
