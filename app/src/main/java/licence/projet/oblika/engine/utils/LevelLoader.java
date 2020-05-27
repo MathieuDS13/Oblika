@@ -93,14 +93,14 @@ public class LevelLoader {
         level.addFixedPlatformList(platform);
     }
 
-    private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
+    private static void generateEnemy(String[] args, LevelStructure level) throws Exception {
         //format : posX, posY, TextureID
         float posX = Float.parseFloat(args[0]);
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);
         verifyFloat(posY);
         String texture = args[2];
-        level.addEnemy(new Enemy(texture, new Point2D(posX,posY)));
+        level.addEnemy(new Enemy(texture, new Point2D(posX, posY)));
     }
 
     private static void generateEndpoint(String[] args, LevelStructure level) throws Exception {
@@ -110,7 +110,7 @@ public class LevelLoader {
         verifyFloat(posX);
         verifyFloat(posY);
         String texture = args[2];
-        Point2D point = new Point2D(posX,posY);
+        Point2D point = new Point2D(posX, posY);
         level.setEndPoint(point, texture);
     }
 
@@ -124,7 +124,7 @@ public class LevelLoader {
         verifyFloat(posX);
         verifyFloat(posY);
         boolean isVertical = (Integer.parseInt(args[3].trim()) == 1);
-        MovingPlatform plateform = new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width);
+        MovingPlatform plateform = new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height, width);
         level.addMovingPlatformList(plateform);
     }
 
