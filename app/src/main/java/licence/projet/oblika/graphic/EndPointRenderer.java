@@ -6,21 +6,21 @@ import licence.projet.oblika.graphic.wrapper.Texture;
 import licence.projet.oblika.graphic.wrapper.VAO;
 import licence.projet.oblika.graphic.wrapper.VBO;
 import licence.projet.oblika.model.Point2D;
-import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.hitboxes.HitBox;
 
-public class CharacterRenderer {
+public class EndPointRenderer {
     private Shader shader;
-    private Texture bueno;
+    private Texture texture;
 
     private VAO rectVAO;
     private float[] pos;
     private float[] size;
 
-    public CharacterRenderer() throws Exception {
-        shader = new Shader("glsl_character_vert", "glsl_character_frag", "character");
+    public EndPointRenderer() throws Exception {
+        shader = new Shader("glsl_endpoint_vert", "glsl_endpoint_frag", "endpoint");
 
-        bueno = new Texture("buenosmole");
+        texture = new Texture("exitdoor");
 
         rectVAO = new VAO()
                 .addVBO(new VBO(Mesh.gen2DQuad(0.5f, 0.5f), 2, 0))
@@ -41,12 +41,12 @@ public class CharacterRenderer {
         shader.sendMat4(0, vpMatrix);
     }
 
-    public void render(Character character) {
-        final Point2D position = character.getActualPosition();
+    public void render(EndPoint endPoint) {
+        final Point2D position = endPoint.getActualPosition();
         pos[0] = position.getX();
         pos[1] = position.getY();
 
-        final HitBox hitBox = character.getHitBox();
+        final HitBox hitBox = endPoint.getHitBox();
         final Point2D topLeft = hitBox.getTopLeft();
         final Point2D botRight = hitBox.getBotRight();
 
@@ -56,7 +56,7 @@ public class CharacterRenderer {
         shader.sendVec2(1, pos);
         shader.sendVec2(2, size);
         shader.sendFloat(3, 0);
-        bueno.bind();
+        texture.bind();
         rectVAO.draw();
     }
 }

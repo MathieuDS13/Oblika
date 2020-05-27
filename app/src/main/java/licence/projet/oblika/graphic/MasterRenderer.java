@@ -7,10 +7,10 @@ import java.util.List;
 import licence.projet.oblika.graphic.helper.Matrix;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class MasterRenderer {
     public static float scale = 10f;
@@ -27,6 +27,7 @@ public class MasterRenderer {
     private MovingPlateformeRenderer movingPlateformeRenderer;
     private FixedPlateformRenderer fixedPlateformRenderer;
     private CharacterRenderer characterRenderer;
+    private EndPointRenderer endPointRenderer;
     private BackgroundRenderer backgroundRenderer;
 
     public MasterRenderer() {
@@ -39,6 +40,7 @@ public class MasterRenderer {
             movingPlateformeRenderer = new MovingPlateformeRenderer();
             fixedPlateformRenderer = new FixedPlateformRenderer();
             characterRenderer = new CharacterRenderer();
+            endPointRenderer = new EndPointRenderer();
             backgroundRenderer = new BackgroundRenderer();
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,6 +62,10 @@ public class MasterRenderer {
 
         Matrix.mat4Ortho(projectionMatrix, -xOffset, xOffset, -yOffset, yOffset, 0, 1);
         Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
+
+        GLES30.glEnable(GLES30.GL_BLEND);
+        GLES30.glEnable(GLES30.GL_SAMPLE_ALPHA_TO_COVERAGE);
+        GLES30.glBlendFunc(GLES30.GL_SRC_ALPHA, GLES30.GL_ONE_MINUS_SRC_ALPHA);
     }
 
     public void prepare() {
@@ -100,6 +106,11 @@ public class MasterRenderer {
     public void character(Character character) {
         characterRenderer.prepare(vpMatrix);
         characterRenderer.render(character);
+    }
+
+    public void endPoint(EndPoint endPoint) {
+        endPointRenderer.prepare(vpMatrix);
+        endPointRenderer.render(endPoint);
     }
 
     public void background() {

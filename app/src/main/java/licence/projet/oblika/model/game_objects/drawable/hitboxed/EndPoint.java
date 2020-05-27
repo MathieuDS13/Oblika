@@ -7,6 +7,9 @@ import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class EndPoint implements GameObject, HitBoxed {
 
+    private final float width = 0.8f;
+    private final float height = 1f;
+
     HitBox hitBox;
     Point2D endPoint;
     String texture;
@@ -14,8 +17,7 @@ public class EndPoint implements GameObject, HitBoxed {
     public EndPoint(Point2D point, String texture) {
         this.endPoint = point;
         this.texture = texture;
-        Point2D point2 = new Point2D(point.getX()+0.5f, point.getY() + 0.5f);
-        this.hitBox = new RectangleHitBox(point,point2);
+        this.hitBox = new RectangleHitBox(new Point2D(-width / 2, height / 2), new Point2D(width / 2, -height / 2));
     }
 
     @Override

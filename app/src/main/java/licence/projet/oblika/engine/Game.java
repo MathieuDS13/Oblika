@@ -5,12 +5,11 @@ import java.util.List;
 import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
-import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.CollisionTester;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
-import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 import licence.projet.oblika.model.level.LevelStructure;
 
 
@@ -22,17 +21,19 @@ public class Game {
     private List<MovingPlatform> movingPlatforms;
     private List<FixedPlatform> fixedPlateforms;
 
-    MainCharacter character;
+    private MainCharacter character;
+    private EndPoint endPoint;
 
     public Game() {
         renderer = new MasterRenderer();
         LevelStructure level = LevelLoader.parseLevel("level1");
         movingPlatforms = level.getMovingPlatformList();
         fixedPlateforms = level.getFixedPlatformList();
+        endPoint = level.getEndPoint();
 
         // camera = new ???();
 
-        character = new MainCharacter(new Point2D(0, 0), "none");
+        character = new MainCharacter(level.getStart(), "none");
     }
 
     public MasterRenderer getRenderer() {
@@ -40,10 +41,18 @@ public class Game {
     }
 
     public void update() {
+        character.update();
+
         for(MovingPlatform movingPlatform : movingPlatforms){
             movingPlatform.update();
             CollisionTester.moveCharacter(character, movingPlatform);
         }
+
+        for (FixedPlatform fixedPlatform : fixedPlateforms) {
+            fixedPlatform.update();
+            CollisionTester.moveCharacter(character, fixedPlatform);
+        }
+
         // calcule de la physique toussa toussa
     }
 
@@ -58,6 +67,8 @@ public class Game {
         renderer.character(character);
 
         renderer.background();
+
+        renderer.endPoint(endPoint);
 
         renderer.finish();
     }

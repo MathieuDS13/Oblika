@@ -15,9 +15,9 @@ public class MainCharacter implements Character, GameObject {
     private Point2D topLeft;
     private Point2D botRight;
     private String textureID;
-    private float speed = 0.7f;
+    private float speed = 1.7f;
     private float height = 1.0f;
-    private float width = 0.2f;
+    private float width = 0.7f;
     private float slidingSpeed = -0.1f;
     private boolean isGrounded = true;
 
@@ -31,6 +31,11 @@ public class MainCharacter implements Character, GameObject {
 
     protected void generateHitBox(){
         hitBox = new RectangleHitBox(topLeft, botRight);
+    }
+
+    @Override
+    public void setGrounded() {
+        isGrounded = true;
     }
 
     @Override
@@ -50,7 +55,6 @@ public class MainCharacter implements Character, GameObject {
 
     @Override
     public void update() {
-
         if (TouchEventListener.isRightSideTouched())
             actualPosition.setX(actualPosition.getX() + speed * Time.delta);
 
@@ -58,7 +62,7 @@ public class MainCharacter implements Character, GameObject {
             actualPosition.setX(actualPosition.getX() - speed * Time.delta);
 
         if (!isGrounded) {
-            slidingSpeed += -0.1f; //Gravity
+            slidingSpeed += -0.35f; //Gravity
             actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
         }
 
@@ -68,7 +72,9 @@ public class MainCharacter implements Character, GameObject {
 
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
-            slidingSpeed = 10;
+            slidingSpeed = 8f;
         }
+
+        isGrounded = false;
     }
 }

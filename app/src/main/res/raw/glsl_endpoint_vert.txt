@@ -11,6 +11,6 @@ layout(location = 2) uniform vec2 size;
 out vec2 uv;
 
 void main() {
+    gl_Position = VP * vec4(size * vertex + pos, -0.1, 1.0);
     uv = texCoord;
-    gl_Position = VP * vec4(size * vertex + pos, -0.4, 1.0);
 }
