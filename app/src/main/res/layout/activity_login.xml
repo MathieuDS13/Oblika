@@ -10,42 +10,48 @@
         android:layout_marginTop="50dp"
         android:text="Connectez-vous"
         android:textColor="#FFFFFF"
-        android:textSize="30dp" />
+        android:textSize="50dp" />
 
     <EditText
         android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="Enter Email"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_marginTop="150dp" />
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:textAlignment="center"
+        android:layout_height="46dp"
         android:inputType="textPassword"
         android:id="@+id/password"
         android:layout_centerHorizontal="true"
-        android:textColorHint="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_marginTop="217dp"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_alignParentTop="true"
         android:hint="Password" />
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentTop="true"
         android:text="Login" />
 
     <Button
         android:id="@+id/goToRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:text="Don't have an account ?" />
 </RelativeLayout>
