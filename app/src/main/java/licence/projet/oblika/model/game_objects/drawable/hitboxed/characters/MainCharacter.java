@@ -17,7 +17,7 @@ public class MainCharacter implements Character, GameObject {
     private String textureID;
     private float speed = 0.7f;
     private float height = 1.0f;
-    private float width = 0.2f;
+    private float width = 0.7f;
     private float slidingSpeed = -0.1f;
     private boolean isGrounded = true;
 

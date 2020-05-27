@@ -3,6 +3,11 @@ precision mediump float;
 
 out vec4 fragColor;
 
+layout(location = 3) uniform sampler2D diffuse;
+
+in vec2 uv;
+
 void main() {
-    fragColor = vec4(0.0, 0.5, 1.0, 1.0);
+    //fragColor = vec4(0.0, 0.5, 1.0, 1.0);
+    fragColor = texture(diffuse, uv);
 }
