@@ -24,7 +24,7 @@ public class LevelLoader {
         LevelLoader.context = context;
     }
 
-    static LevelStructure parseLevel(String levelName) {
+    public static LevelStructure parseLevel(String levelName) {
 
         LevelStructure level = new LevelStructure();
 
