@@ -5,18 +5,18 @@ import licence.projet.oblika.graphic.wrapper.Shader;
 import licence.projet.oblika.graphic.wrapper.VAO;
 import licence.projet.oblika.graphic.wrapper.VBO;
 import licence.projet.oblika.model.Point2D;
-import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.hitboxes.HitBox;
 
-public class MovingPlateformeRenderer {
+public class CharacterRenderer {
     private Shader shader;
 
     private VAO rectVAO;
     private float[] pos;
     private float[] size;
 
-    public MovingPlateformeRenderer() throws Exception {
-        shader = new Shader("glsl_plateforme_vert", "glsl_movingplateforme_frag", "movingplateforme");
+    public CharacterRenderer() throws Exception {
+        shader = new Shader("glsl_character_vert", "glsl_character_frag", "character");
 
         rectVAO = new VAO()
                 .addVBO(new VBO(Mesh.gen2DQuad(0.5f, 0.5f), 2, 0))
@@ -36,12 +36,12 @@ public class MovingPlateformeRenderer {
         shader.sendMat4(0, vpMatrix);
     }
 
-    public void render(MovingPlatform movingPlatform) {
-        final Point2D position = movingPlatform.getActualPosition();
+    public void render(FixedPlatform fixedPlatform) {
+        final Point2D position = fixedPlatform.getActualPosition();
         pos[0] = position.getX();
         pos[1] = position.getY();
 
-        final HitBox hitBox = movingPlatform.getHitBox();
+        final HitBox hitBox = fixedPlatform.getHitBox();
         final Point2D topLeft = hitBox.getTopLeft();
         final Point2D botRight = hitBox.getBotRight();
 
@@ -51,28 +51,6 @@ public class MovingPlateformeRenderer {
         shader.sendVec2(1, pos);
         shader.sendVec2(2, size);
         shader.sendFloat(3, 0);
-        rectVAO.draw();
-
-
-
-
-
-        final Point2D spawnPosition = movingPlatform.getSpawnPosition();
-        pos[0] = spawnPosition.getX();
-        pos[1] = spawnPosition.getY();
-
-
-        if(movingPlatform.isVertical()) {
-            size[0] = .1f;
-            size[1] = movingPlatform.getRange() * 2f;
-        } else {
-            size[1] = .1f;
-            size[0] = movingPlatform.getRange() * 2f;
-        }
-
-        shader.sendVec2(1, pos);
-        shader.sendVec2(2, size);
-        shader.sendFloat(3, 1);
         rectVAO.draw();
     }
 }

@@ -46,6 +46,8 @@ public class Game {
         // renderer.camera(camera);
         renderer.movingPlatforms(movingPlatforms);
 
+        //renderer.fixedPlatforms(...);
+
         renderer.background();
 
         renderer.finish();

@@ -4,22 +4,19 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/buttonSound"
+        android:id="@+id/amis"
         android:layout_width="255dp"
         android:layout_height="46dp"
         android:layout_centerInParent="false"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="276dp"
-        android:text="Sons" />
+        android:layout_marginTop="120dp"
+        android:text="Amis" />
 
     <Button
-        android:id="@+id/buttonUtilisateur"
+        android:id="@+id/global"
         android:layout_width="255dp"
         android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="120dp"
-        android:text="Profil utilisateur" />
-
-
+        android:layout_marginTop="276dp"
+        android:text="Global" />
 </RelativeLayout>
-
