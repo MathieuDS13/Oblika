@@ -2,18 +2,19 @@ package licence.projet.oblika.activities;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
+import licence.projet.oblika.engine.GameEndListener;
 import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.engine.utils.AudioHandler;
 import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 
 public class GameActivity extends Activity {
-    private GLSurfaceView gLView;
+    private GLView gLView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,14 @@ public class GameActivity extends Activity {
 
         setContentView(gLView);
         gLView.setOnTouchListener(touchEvent);
+
+        gLView.onGameEnd(new GameEndListener() {
+            @Override
+            public void run() {
+                Intent activity2Intent = new Intent(getApplicationContext(), EndGameActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
     }
 
     @Override
