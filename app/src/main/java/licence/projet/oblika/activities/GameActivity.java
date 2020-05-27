@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import licence.projet.oblika.engine.utils.AccelerometerListener;
 import licence.projet.oblika.engine.utils.AudioHandler;
+import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.engine.utils.TouchEventListener;
 
 public class GameActivity extends Activity {
@@ -28,6 +29,8 @@ public class GameActivity extends Activity {
         AudioHandler.init(this);
         AudioHandler.startLoop();
         gLView = new GLView(this);
+        LevelLoader.init(this);
+
 
         setContentView(gLView);
         gLView.setOnTouchListener(touchEvent);

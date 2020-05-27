@@ -1,17 +1,14 @@
 /
 FIX_PLAT
-2.0, 3.0, none
-1.0, 4.0, none
+-2.0, 2.0, none, 2.0, 0.5
+-5.0, -5.0, none, 2.0, 0.5
 /
 MOV_PLAT
-5.0, 7.0, none, false, 3.0
-8.0.0, 9.0, none, true, 4.0
+-2.0, -1.0, none, false, 1.5, 2.0, 0.5
+2.5, 0.0, none, true, 2.5, 2.0, 0.5
 /
 STARTPOINT
-7.0, 10.0
+-5.0, -5.0
 /
 ENDPOINT
-10.0,5.0, textureID
-/
-ENNEMY
-7.0,4.0, textureID
+5.0,-5.0, none

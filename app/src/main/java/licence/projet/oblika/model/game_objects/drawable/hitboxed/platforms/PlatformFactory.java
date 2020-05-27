@@ -22,7 +22,7 @@ public class PlatformFactory {
         return new MovingPlatform(horizontalPlatformTextureID, position, false, 1, 1, 1);
     }
 
-    public FixedPlatform CreateFixedPlatform(Point2D position){
-        return new FixedPlatform(fixedPlatformTextureID, position);
+    public FixedPlatform CreateFixedPlatform(Point2D position, float height, float width){
+        return new FixedPlatform(fixedPlatformTextureID, position, height, width);
     }
 }

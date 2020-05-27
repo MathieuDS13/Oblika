@@ -20,12 +20,13 @@ public class LevelLoader {
     private enum Type {MOV_PLAT, FIX_PLAT, ENNEMY, STARTPOINT, ENDPOINT}
 
     private final static String splitter = "/";
+    private final static String argSplitter = ",";
 
     public static void init(Context context) {
         LevelLoader.context = context;
     }
 
-    static LevelStructure parseLevel(String levelName) {
+    public static LevelStructure parseLevel(String levelName) {
 
         LevelStructure level = new LevelStructure();
 
@@ -48,7 +49,7 @@ public class LevelLoader {
                     continue;
                 }
 
-                String[] args = line.split(splitter);
+                String[] args = line.split(argSplitter);
                 if (type != null) {
                     switch (type) {
                         case FIX_PLAT:
@@ -88,9 +89,8 @@ public class LevelLoader {
         float height = Float.parseFloat(args[4]);
         verifyFloat(posX);
         verifyFloat(posY);
-        verifyFloat(width);
-        verifyFloat(height);
-        level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY), height, width));
+        FixedPlatform platform = new FixedPlatform(args[2], new Point2D(posX, posY), height, width);
+        level.addFixedPlatformList(platform);
     }
 
     private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
@@ -123,11 +123,9 @@ public class LevelLoader {
         float height = Float.parseFloat(args[6]);
         verifyFloat(posX);
         verifyFloat(posY);
-        verifyFloat(range);
-        verifyFloat(width);
-        verifyFloat(height);
         boolean isVertical = Boolean.parseBoolean(args[3]);
-        level.addMovingPlatformList(new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width) );
+        MovingPlatform plateform = new MovingPlatform(args[2], new Point2D(posX, posY), isVertical, range, height,width);
+        level.addMovingPlatformList(plateform);
     }
 
     private static void generateStartpoint(String[] args, LevelStructure level) throws Exception {
@@ -140,7 +138,7 @@ public class LevelLoader {
     }
 
     private static void verifyFloat(float pos) throws Exception {
-        if (pos < 0 || pos > 10) {
+        if (pos < -5 || pos > 5) {
             throw new Exception("Invalid object placement in the level");
         }
     }
