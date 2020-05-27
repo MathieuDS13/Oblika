@@ -7,6 +7,8 @@ import java.util.List;
 import licence.projet.oblika.graphic.helper.Matrix;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
@@ -23,6 +25,8 @@ public class MasterRenderer {
 
     //private HitboxRenderer hitboxRenderer;
     private MovingPlateformeRenderer movingPlateformeRenderer;
+    private FixedPlateformRenderer fixedPlateformRenderer;
+    private CharacterRenderer characterRenderer;
     private BackgroundRenderer backgroundRenderer;
 
     public MasterRenderer() {
@@ -33,6 +37,8 @@ public class MasterRenderer {
         try {
             //hitboxRenderer = new HitboxRenderer();
             movingPlateformeRenderer = new MovingPlateformeRenderer();
+            fixedPlateformRenderer = new FixedPlateformRenderer();
+            characterRenderer = new CharacterRenderer();
             backgroundRenderer = new BackgroundRenderer();
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,6 +87,19 @@ public class MasterRenderer {
         for(MovingPlatform mp : movingPlatforms) {
             movingPlateformeRenderer.render(mp);
         }
+    }
+
+    public void fixedPlatforms(List<FixedPlatform> fixedPlatforms) {
+        fixedPlateformRenderer.prepare(vpMatrix);
+
+        for(FixedPlatform fp : fixedPlatforms) {
+            fixedPlateformRenderer.render(fp);
+        }
+    }
+
+    public void character(Character character) {
+        characterRenderer.prepare(vpMatrix);
+        characterRenderer.render(character);
     }
 
     public void background() {

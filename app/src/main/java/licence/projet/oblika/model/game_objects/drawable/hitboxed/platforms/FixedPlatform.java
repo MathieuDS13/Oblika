@@ -8,18 +8,25 @@ import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 public class FixedPlatform implements Platform, GameObject {
 
     private String textureID;
-    private Point2D position;
+    private Point2D topLeft;
+    private Point2D botRight;
+    private Point2D actualPosition;
     private HitBox hitBox;
+    private float range;
 
-    public FixedPlatform(String textureID, Point2D position) {
+    public FixedPlatform(String textureID, Point2D actualPosition, float height, float width) {
         this.textureID = textureID;
-        this.position = position;
+
+        this.topLeft = new Point2D(-width/2, height/2);
+        this.botRight = new Point2D(width/2, -height/2);
+
+        this.actualPosition = actualPosition;
+
+        this.range = range;
         generateHitBox();
     }
 
     private void generateHitBox(){
-        Point2D topLeft = new Point2D(position.getX(), position.getY() + 10);
-        Point2D botRight = new Point2D(position.getX() + 30, position.getY());
         hitBox = new RectangleHitBox(topLeft, botRight);
     }
 
@@ -30,7 +37,7 @@ public class FixedPlatform implements Platform, GameObject {
 
     @Override
     public Point2D getActualPosition() {
-        return position;
+        return actualPosition;
     }
 
     @Override

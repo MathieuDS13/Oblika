@@ -11,23 +11,31 @@ import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 public class MainCharacter implements Character, GameObject {
 
     private RectangleHitBox hitBox;
-    private Point2D position;
+    private Point2D actualPosition;
+    private Point2D topLeft;
+    private Point2D botRight;
     private String textureID;
-    private float speed = 0.08f;
+    private float speed = 0.7f;
     private float height = 1.0f;
     private float width = 0.2f;
-    private float gravity = 0.1f;
-    private boolean isGrounded = true; //défini si le joueur est sur une plateforme
+    private float slidingSpeed = -0.1f;
+    private boolean isGrounded = true;
 
-    public MainCharacter(RectangleHitBox hitBox, Point2D position, String textureID) {
-        this.hitBox = hitBox;
-        this.position = position;
+    public MainCharacter(Point2D actualPosition, String textureID) {
+        this.topLeft = new Point2D(-width/2, height/2);
+        this.botRight = new Point2D(width/2, -height/2);
+        this.actualPosition = actualPosition;
         this.textureID = textureID;
+        generateHitBox();
+    }
+
+    protected void generateHitBox(){
+        hitBox = new RectangleHitBox(topLeft, botRight);
     }
 
     @Override
     public Point2D getActualPosition() {
-        return this.position;
+        return this.actualPosition;
     }
 
     @Override
@@ -42,18 +50,25 @@ public class MainCharacter implements Character, GameObject {
 
     @Override
     public void update() {
+
         if (TouchEventListener.isRightSideTouched())
-            position.setX(position.getX() + speed * Time.delta);
+            actualPosition.setX(actualPosition.getX() + speed * Time.delta);
+
         if (TouchEventListener.isLeftSideTouched())
-            position.setX(position.getX() + speed * Time.delta);
+            actualPosition.setX(actualPosition.getX() - speed * Time.delta);
+
         if (!isGrounded) {
-            //Si le joueur est en l'air lui applique la gravité pour le faire redescendre
-            position.setY(position.getY() - gravity * Time.delta);
+            slidingSpeed += -0.1f; //Gravity
+            actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
         }
+
+        if(isGrounded){
+            slidingSpeed = 0;
+        }
+
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
-            //TODO calculer la physique du saut OSKUR
+            slidingSpeed = 10;
         }
-        //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
     }
 }

@@ -23,7 +23,7 @@ public class LevelStructure {
     private List<GameObject> gameObjects;
 
 
-    public void LevelStructure() {
+    public LevelStructure() {
         this.levelName = "";
         this.fixedPlatformList = new ArrayList<>();
         this.movingPlatformList = new ArrayList<>();
@@ -42,6 +42,7 @@ public class LevelStructure {
     }
 
     public void addFixedPlatformList(FixedPlatform platform) {
+        System.out.println("levelstruct" + fixedPlatformList);
         fixedPlatformList.add(platform);
         gameObjects.add(platform);
     }
