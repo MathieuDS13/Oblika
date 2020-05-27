@@ -72,4 +72,8 @@ public class CollisionTester {
         fillBuffers(character, endPoint);
         return buffersOverlap();
     }
+
+    public static boolean characterOutOfBounds(Character character) {
+        return character.getActualPosition().getY() < -10f;
+    }
 }

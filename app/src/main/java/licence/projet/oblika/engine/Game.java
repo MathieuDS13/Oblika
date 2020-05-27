@@ -6,6 +6,7 @@ import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
+import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.CollisionTester;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
@@ -27,13 +28,19 @@ public class Game {
     private List<FixedPlatform> fixedPlateforms;
 
     private MainCharacter character;
+    private Point2D spawnPoint;
     private EndPoint endPoint;
 
     public Game() {
+        this("level1");
+    }
+
+    public Game(String levelName) {
         renderer = new MasterRenderer();
-        LevelStructure level = LevelLoader.parseLevel("level1");
+        LevelStructure level = LevelLoader.parseLevel(levelName);
         movingPlatforms = level.getMovingPlatformList();
         fixedPlateforms = level.getFixedPlatformList();
+        spawnPoint = new Point2D(level.getStart().getX(), level.getStart().getY());
         endPoint = level.getEndPoint();
 
         // camera = new ???();
@@ -70,6 +77,11 @@ public class Game {
             }
         }
 
+        if(CollisionTester.characterOutOfBounds(character)) {
+            character.getActualPosition().setX(spawnPoint.getX());
+            character.getActualPosition().setY(spawnPoint.getY());
+            System.out.println(spawnPoint.getX() +" | "+ spawnPoint.getY());
+        }
         // calcule de la physique toussa toussa
     }
 
