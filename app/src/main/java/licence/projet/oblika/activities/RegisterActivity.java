@@ -73,8 +73,9 @@ public class RegisterActivity extends Activity {
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 String pseudo = edPseudo.getText().toString();
-                                DataBaseHandler.createNewUser(pseudo, user.getEmail());
-                                DataBaseHandler.login(user);
+                                DataBaseHandler.register(user, pseudo);
+                                DataBaseHandler.setPseudo(pseudo);
+                                //TODO des trucs
                                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(activity2Intent);
                                 //TODO modifier l'UI avec les paramètres de l'utilisateur
