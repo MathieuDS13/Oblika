@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.CollisionTester;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.hitboxes.RectangleHitBox;
 
 public class Game {
     private MasterRenderer renderer;
@@ -13,6 +16,8 @@ public class Game {
     private Camera camera;
 
     private ArrayList<MovingPlatform> movingPlatforms;
+
+    MainCharacter character;
 
     public Game() {
         renderer = new MasterRenderer();
@@ -27,6 +32,8 @@ public class Game {
 
         movingPlatforms.add(testHorizontal);
         movingPlatforms.add(testVertical);
+
+        character = new MainCharacter(new RectangleHitBox(new  Point2D(-0.5f, 0.5f), new Point2D(0.5f, -0.5f)), new Point2D(0, 0), "none");
     }
 
     public MasterRenderer getRenderer() {
@@ -36,6 +43,7 @@ public class Game {
     public void update() {
         for(MovingPlatform movingPlatform : movingPlatforms){
             movingPlatform.update();
+            CollisionTester.moveCharacter(character, movingPlatform);
         }
         // calcule de la physique toussa toussa
     }
@@ -47,6 +55,8 @@ public class Game {
         renderer.movingPlatforms(movingPlatforms);
 
         //renderer.fixedPlatforms(...);
+
+        renderer.character(character);
 
         renderer.background();
 

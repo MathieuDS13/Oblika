@@ -8,5 +8,5 @@ layout(location = 1) uniform vec2 pos;
 layout(location = 2) uniform vec2 size;
 
 void main() {
-    gl_Position = VP * vec4(size * vertex + pos, -0.5, 1.0);
+    gl_Position = VP * vec4(size * vertex + pos, -0.4, 1.0);
 }
