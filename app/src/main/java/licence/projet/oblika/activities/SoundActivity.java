@@ -51,6 +51,12 @@ public class SoundActivity extends Activity {
     };
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        AudioHandler.resumeLoop();
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         AudioHandler.endLoop();
@@ -59,6 +65,6 @@ public class SoundActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        AudioHandler.endLoop();
+        AudioHandler.pauseLoop();
     }
 }

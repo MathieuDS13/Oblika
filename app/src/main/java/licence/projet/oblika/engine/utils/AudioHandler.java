@@ -17,7 +17,7 @@ public class AudioHandler {
     private static List<MediaPlayer> players = new ArrayList<>();
     private final static int MAX_VOLUME = 100;
 
-    public static void init(Context context){
+    public static void init(Context context) {
         AudioHandler.context = context;
         AudioHandler.mediaPlayer = MediaPlayer.create(context, R.raw.music);
         AudioHandler.jumpPlayer = MediaPlayer.create(context, R.raw.jump);
@@ -25,21 +25,29 @@ public class AudioHandler {
         players.add(jumpPlayer);
     }
 
-    public static void startLoop(){
+    public static void startLoop() {
         mediaPlayer.setLooping(true);
         setVolume(volume);
         mediaPlayer.start();
     }
 
-    public static void endLoop(){
+    public static void pauseLoop() {
+        mediaPlayer.pause();
+    }
+
+    public static void resumeLoop() {
+        mediaPlayer.start();
+    }
+
+    public static void endLoop() {
         mediaPlayer.stop();
     }
 
-    public static void playJumpSound(){
+    public static void playJumpSound() {
         jumpPlayer.start();
     }
 
-    public static void setVolume(float volume){
+    public static void setVolume(float volume) {
         final float newVolume = (float) (1 - (Math.log(MAX_VOLUME - volume) / Math.log(MAX_VOLUME)));
         AudioHandler.volume = volume;
         for (MediaPlayer player :
@@ -48,7 +56,7 @@ public class AudioHandler {
         }
     }
 
-    public static float getVolume(){
+    public static float getVolume() {
         return volume;
     }
 
