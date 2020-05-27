@@ -23,7 +23,6 @@ public class MasterRenderer {
     private float viewportHeight;
     private float ratio;
 
-    //private HitboxRenderer hitboxRenderer;
     private MovingPlateformeRenderer movingPlateformeRenderer;
     private FixedPlateformRenderer fixedPlateformRenderer;
     private CharacterRenderer characterRenderer;
@@ -36,7 +35,6 @@ public class MasterRenderer {
         vpMatrix = Matrix.mat4GenIdentity();
 
         try {
-            //hitboxRenderer = new HitboxRenderer();
             movingPlateformeRenderer = new MovingPlateformeRenderer();
             fixedPlateformRenderer = new FixedPlateformRenderer();
             characterRenderer = new CharacterRenderer();
@@ -79,13 +77,6 @@ public class MasterRenderer {
 
         Matrix.mat4Mult(vpMatrix, projectionMatrix, viewMatrix);
     }
-
-    /*public void hitboxes(List<RectangleHitBox> hitboxes) {
-        hitboxRenderer.prepare(vpMatrix);
-        for (RectangleHitBox hitbox : hitboxes) {
-            hitboxRenderer.render(hitbox);
-        }
-    }*/
 
     public void movingPlatforms(List<MovingPlatform> movingPlatforms) {
         movingPlateformeRenderer.prepare(vpMatrix);

@@ -7,16 +7,23 @@ import javax.microedition.khronos.opengles.GL10;
 
 import licence.projet.oblika.Time;
 import licence.projet.oblika.engine.Game;
+import licence.projet.oblika.engine.GameEndListener;
 
 public class GLEngine implements GLSurfaceView.Renderer {
     private Game game;
 
+    private GameEndListener gameEndListener;
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         Time.init();
 
         game = new Game();
+        game.setGameEndListener(gameEndListener);
+    }
+
+    public void onGameEnd(GameEndListener listener) {
+        gameEndListener = listener;
     }
 
     @Override

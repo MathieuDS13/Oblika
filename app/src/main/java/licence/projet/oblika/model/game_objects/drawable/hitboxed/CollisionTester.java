@@ -2,6 +2,7 @@ package licence.projet.oblika.model.game_objects.drawable.hitboxed;
 
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.Platform;
 import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
@@ -10,29 +11,35 @@ public class CollisionTester {
     private static RectangleHitBox ch = new RectangleHitBox(new Point2D(-5, 0), new Point2D(0, -5));
     private static RectangleHitBox ph = new RectangleHitBox(new Point2D(-5, 0), new Point2D(0, -5));
 
-    public static void moveCharacter(Character character , Platform platform) {
-        HitBox charHitBox = character.getHitBox();
+    private static void fillBuffers(HitBoxed c, HitBoxed p) {
+        HitBox charHitBox = c.getHitBox();
+        ch.getTopLeft().setX(charHitBox.getTopLeft().getX() + c.getActualPosition().getX());
+        ch.getTopLeft().setY(charHitBox.getTopLeft().getY() + c.getActualPosition().getY());
 
-        ch.getTopLeft().setX(charHitBox.getTopLeft().getX() + character.getActualPosition().getX());
-        ch.getTopLeft().setY(charHitBox.getTopLeft().getY() + character.getActualPosition().getY());
+        ch.getBotRight().setX(charHitBox.getBotRight().getX() + c.getActualPosition().getX());
+        ch.getBotRight().setY(charHitBox.getBotRight().getY() + c.getActualPosition().getY());
 
-        ch.getBotRight().setX(charHitBox.getBotRight().getX() + character.getActualPosition().getX());
-        ch.getBotRight().setY(charHitBox.getBotRight().getY() + character.getActualPosition().getY());
+        HitBox platformHitBox = p.getHitBox();
+        ph.getTopLeft().setX(platformHitBox.getTopLeft().getX() + p.getActualPosition().getX());
+        ph.getTopLeft().setY(platformHitBox.getTopLeft().getY() + p.getActualPosition().getY());
+
+        ph.getBotRight().setX(platformHitBox.getBotRight().getX() + p.getActualPosition().getX());
+        ph.getBotRight().setY(platformHitBox.getBotRight().getY() + p.getActualPosition().getY());
+    }
 
 
-        HitBox platformHitBox = platform.getHitBox();
-        ph.getTopLeft().setX(platformHitBox.getTopLeft().getX() + platform.getActualPosition().getX());
-        ph.getTopLeft().setY(platformHitBox.getTopLeft().getY() + platform.getActualPosition().getY());
-
-        ph.getBotRight().setX(platformHitBox.getBotRight().getX() + platform.getActualPosition().getX());
-        ph.getBotRight().setY(platformHitBox.getBotRight().getY() + platform.getActualPosition().getY());
-
-        if(!
-                (
+    public static boolean buffersOverlap() {
+        return !(
                         (ch.getBotRight().getX() < ph.getTopLeft().getX()) || (ch.getTopLeft().getX() > ph.getBotRight().getX()) ||
                         (ch.getBotRight().getY() > ph.getTopLeft().getY()) || (ch.getTopLeft().getY() < ph.getBotRight().getY())
-                )
-        ) {
+                );
+    }
+
+
+    public static void moveCharacter(Character character , Platform platform) {
+        fillBuffers(character, platform);
+
+        if(buffersOverlap()) {
             final float dxg = ph.getBotRight().getX() - ch.getTopLeft().getX();
             final float dxd = ch.getBotRight().getX() - ph.getTopLeft().getX();
 
@@ -54,11 +61,28 @@ public class CollisionTester {
                 if(miny == Math.abs(dyg) && dyg > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() + dyg);
                     character.setGrounded();
+
+                    if(platform instanceof MovingPlatform) { // c'est de la merde ca mais bon
+                        MovingPlatform p = (MovingPlatform) platform;
+
+                        float dx = p.getActualPosition().getX() - p.getLastPosition().getX();
+                        character.getActualPosition().setX(character.getActualPosition().getX() + dx);
+                    }
+
                 }
                 else if(miny == Math.abs(dyd) && dyd > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() - dyd);
                 }
             }
         }
+    }
+
+    public static boolean characterTouchEndPoint(Character character, EndPoint endPoint) {
+        fillBuffers(character, endPoint);
+        return buffersOverlap();
+    }
+
+    public static boolean characterOutOfBounds(Character character) {
+        return character.getActualPosition().getY() < -10f;
     }
 }
