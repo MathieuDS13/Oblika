@@ -11,9 +11,11 @@ import licence.projet.oblika.engine.Game;
 public class GLEngine implements GLSurfaceView.Renderer {
     private Game game;
 
+
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         Time.init();
+
         game = new Game();
     }
 
