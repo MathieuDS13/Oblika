@@ -7,45 +7,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentTop="true"
         android:text="Créez votre compte"
         android:textColor="#FFFFFF"
-        android:textSize="30dp" />
+        android:textSize="50dp" />
 
     <EditText
         android:id="@+id/registerEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
         android:hint="Enter Email"
         android:textColor="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_marginTop="150dp" />
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true" />
 
     <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:inputType="textPassword"
         android:id="@+id/registerPass"
         android:layout_centerHorizontal="true"
-        android:textColorHint="#FFFFFF"
-        android:textSize="30dp"
-        android:layout_marginTop="217dp"
+        android:textColor="#FFFFFF"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:layout_marginTop="200dp"
+        android:layout_alignParentTop="true"
         android:hint="Password" />
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentTop="true"
         android:text="Register" />
 
     <Button
         android:id="@+id/goToLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="350dp"
+        android:layout_marginBottom="10dp"
+        android:layout_alignParentBottom="true"
         android:text="Already have an account ?" />
 </RelativeLayout>
