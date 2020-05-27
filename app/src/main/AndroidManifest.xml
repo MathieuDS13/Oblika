@@ -75,5 +75,17 @@
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
 
+        <activity
+            android:name=".activities.LoginActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+
     </application>
 </manifest>
