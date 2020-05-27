@@ -61,10 +61,9 @@ public class MainCharacter implements Character, GameObject {
         if (TouchEventListener.isLeftSideTouched())
             actualPosition.setX(actualPosition.getX() - speed * Time.delta);
 
-        if (!isGrounded) {
-            slidingSpeed += -0.35f; //Gravity
-            actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
-        }
+
+        slidingSpeed += -0.35f; //Gravity
+        actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
 
         if(isGrounded){
             slidingSpeed = 0;

@@ -19,6 +19,8 @@ public class MovingPlatform implements Platform, GameObject {
     private float range;
     private float slidingSpeed = 0f;
 
+    private Point2D lastPosition;
+
     public MovingPlatform(String textureID, Point2D actualPosition, boolean isVertical, float range, float height, float width) {
         this.textureID = textureID;
 
@@ -32,6 +34,8 @@ public class MovingPlatform implements Platform, GameObject {
         this.range = range;
 
         generateHitBox();
+
+        lastPosition = new Point2D(actualPosition.getX(), actualPosition.getY());
     }
 
     public boolean isVertical() {
@@ -60,6 +64,10 @@ public class MovingPlatform implements Platform, GameObject {
         return actualPosition;
     }
 
+    public Point2D getLastPosition() {
+        return lastPosition;
+    }
+
     @Override
     public String getTextureId() {
         return textureID;
@@ -67,6 +75,9 @@ public class MovingPlatform implements Platform, GameObject {
 
     @Override
     public void update() {
+        lastPosition.setX(actualPosition.getX());
+        lastPosition.setY(actualPosition.getY());
+
         if (isVertical) {
             float yAcc = Math.abs(AccelerometerListener.getY()) > .2f ? AccelerometerListener.getY() * .5f : 0f;
             slidingSpeed += yAcc;

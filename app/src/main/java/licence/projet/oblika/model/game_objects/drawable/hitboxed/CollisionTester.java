@@ -2,6 +2,7 @@ package licence.projet.oblika.model.game_objects.drawable.hitboxed;
 
 import licence.projet.oblika.model.Point2D;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.Platform;
 import licence.projet.oblika.model.hitboxes.HitBox;
 import licence.projet.oblika.model.hitboxes.RectangleHitBox;
@@ -60,6 +61,14 @@ public class CollisionTester {
                 if(miny == Math.abs(dyg) && dyg > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() + dyg);
                     character.setGrounded();
+
+                    if(platform instanceof MovingPlatform) { // c'est de la merde ca mais bon
+                        MovingPlatform p = (MovingPlatform) platform;
+
+                        float dx = p.getActualPosition().getX() - p.getLastPosition().getX();
+                        character.getActualPosition().setX(character.getActualPosition().getX() + dx);
+                    }
+
                 }
                 else if(miny == Math.abs(dyd) && dyd > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() - dyd);
