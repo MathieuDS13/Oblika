@@ -5,6 +5,7 @@ import licence.projet.oblika.graphic.wrapper.Shader;
 import licence.projet.oblika.graphic.wrapper.VAO;
 import licence.projet.oblika.graphic.wrapper.VBO;
 import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.Character;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.hitboxes.HitBox;
 
@@ -36,12 +37,12 @@ public class CharacterRenderer {
         shader.sendMat4(0, vpMatrix);
     }
 
-    public void render(FixedPlatform fixedPlatform) {
-        final Point2D position = fixedPlatform.getActualPosition();
+    public void render(Character character) {
+        final Point2D position = character.getActualPosition();
         pos[0] = position.getX();
         pos[1] = position.getY();
 
-        final HitBox hitBox = fixedPlatform.getHitBox();
+        final HitBox hitBox = character.getHitBox();
         final Point2D topLeft = hitBox.getTopLeft();
         final Point2D botRight = hitBox.getBotRight();
 

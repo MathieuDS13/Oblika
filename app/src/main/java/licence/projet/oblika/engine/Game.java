@@ -8,6 +8,12 @@ import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
 import licence.projet.oblika.model.level.LevelStructure;
+import licence.projet.oblika.model.Point2D;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.CollisionTester;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
+import licence.projet.oblika.model.hitboxes.RectangleHitBox;
+
 
 public class Game {
     private MasterRenderer renderer;
@@ -17,6 +23,8 @@ public class Game {
     private List<MovingPlatform> movingPlatforms;
     private List<FixedPlatform> fixedPlateforms;
 
+    MainCharacter character;
+
     public Game() {
         renderer = new MasterRenderer();
         LevelStructure level = LevelLoader.parseLevel("level1");
@@ -25,7 +33,7 @@ public class Game {
 
         // camera = new ???();
 
-
+        character = new MainCharacter(new RectangleHitBox(new  Point2D(-0.5f, 0.5f), new Point2D(0.5f, -0.5f)), new Point2D(0, 0), "none");
     }
 
     public MasterRenderer getRenderer() {
@@ -35,6 +43,7 @@ public class Game {
     public void update() {
         for(MovingPlatform movingPlatform : movingPlatforms){
             movingPlatform.update();
+            CollisionTester.moveCharacter(character, movingPlatform);
         }
         // calcule de la physique toussa toussa
     }
@@ -46,6 +55,8 @@ public class Game {
         renderer.movingPlatforms(movingPlatforms);
 
         //renderer.fixedPlatforms(...);
+
+        renderer.character(character);
 
         renderer.background();
 

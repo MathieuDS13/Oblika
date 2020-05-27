@@ -45,6 +45,12 @@ public class GameActivity extends Activity {
     @Override
     protected void onPause() {
         super.onPause();
-        AudioHandler.endLoop();
+        AudioHandler.pauseLoop();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        AudioHandler.resumeLoop();
     }
 }
