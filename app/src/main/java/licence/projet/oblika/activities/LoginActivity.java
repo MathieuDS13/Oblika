@@ -1,9 +1,13 @@
 package licence.projet.oblika.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,12 +23,38 @@ import static android.support.constraint.Constraints.TAG;
 public class LoginActivity extends Activity {
 
     private FirebaseAuth mAuth;
+    Button buttonLogin, goToRegister;
+    EditText edMail, edPass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_login);
+
+        mAuth = FirebaseAuth.getInstance();
+        buttonLogin = findViewById(R.id.login);
+        edMail = findViewById(R.id.email);
+        edPass = findViewById(R.id.password);
+        goToRegister = findViewById(R.id.goToRegister);
+
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                String email = edMail.getText().toString();
+                String password = edPass.getText().toString();
+                login(email, password);
+            }
+        });
+
+
+        goToRegister.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
     }
 
     @Override
@@ -51,7 +81,9 @@ public class LoginActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            //TODO mettre à jour la page comme l'utilisateur est log
+                            //Renvoie sur la page d'accueil
+                            Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(activity2Intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());

@@ -1,9 +1,14 @@
 package licence.projet.oblika.activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,12 +26,34 @@ public class RegisterActivity extends Activity {
     private FirebaseAuth mAuth;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-        setContentView(R.layout.activity_login);
-    }
+        setContentView(R.layout.activity_register);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        Button register = findViewById(R.id.registerButton);
+        Button goToLogin = findViewById(R.id.goToLogin);
+        final EditText edEmail = findViewById(R.id.registerEmail);
+        final EditText edPass = findViewById(R.id.registerPass);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = edEmail.getText().toString();
+                String password = edPass.getText().toString();
+                signUp(email, password);
+            }
+        });
+
+        goToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(activity2Intent);
+            }
+        });
+    }
 
     private void signUp(String email, String password) {
         //TODO vérifier le mail et le mot de passe
@@ -43,6 +70,8 @@ public class RegisterActivity extends Activity {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(activity2Intent);
                                 //TODO modifier l'UI avec les paramètres de l'utilisateur
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -57,6 +86,6 @@ public class RegisterActivity extends Activity {
     }
 
     private boolean isInfoValid(String mail, String password) {
-        return false;
+        return (mail != null && password != null);
     }
 }
