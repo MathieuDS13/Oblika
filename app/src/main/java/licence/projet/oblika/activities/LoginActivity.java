@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import licence.projet.oblika.R;
+import licence.projet.oblika.model.DataBaseHandler;
 
 import static android.support.constraint.Constraints.TAG;
 
@@ -81,6 +82,7 @@ public class LoginActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            DataBaseHandler.setUser(user);
                             //Renvoie sur la page d'accueil
                             Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(activity2Intent);
