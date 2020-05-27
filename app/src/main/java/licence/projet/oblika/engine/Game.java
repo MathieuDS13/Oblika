@@ -39,10 +39,17 @@ public class Game {
 
     public void update() {
         character.update();
+
         for(MovingPlatform movingPlatform : movingPlatforms){
             movingPlatform.update();
             CollisionTester.moveCharacter(character, movingPlatform);
         }
+
+        for(FixedPlatform fixedPlatform : fixedPlateforms){
+            fixedPlatform.update();
+            CollisionTester.moveCharacter(character, fixedPlatform);
+        }
+
         // calcule de la physique toussa toussa
     }
 

@@ -26,8 +26,7 @@ public class CollisionTester {
 
         ph.getBotRight().setX(platformHitBox.getBotRight().getX() + platform.getActualPosition().getX());
         ph.getBotRight().setY(platformHitBox.getBotRight().getY() + platform.getActualPosition().getY());
-
-
+        
         if(!
                 (
                         (ch.getBotRight().getX() < ph.getTopLeft().getX()) || (ch.getTopLeft().getX() > ph.getBotRight().getX()) ||
