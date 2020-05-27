@@ -49,7 +49,15 @@ public class DataBaseHandler {
         return false;
     }
 
-    public static void setUser(FirebaseUser user) {
+
+    public static void deleteUser() {
+        user.delete();
+        mDatabase.child("users").child(mail).removeValue();
+    }
+
+    public static void login(FirebaseUser user) {
         DataBaseHandler.user = user;
+        DataBaseHandler.mail = user.getEmail();
+        DataBaseHandler.pseudo = mDatabase.child("users").child(mail).toString();
     }
 }
