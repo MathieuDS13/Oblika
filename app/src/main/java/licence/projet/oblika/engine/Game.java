@@ -6,6 +6,7 @@ import licence.projet.oblika.engine.utils.LevelLoader;
 import licence.projet.oblika.graphic.MasterRenderer;
 import licence.projet.oblika.model.Camera;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.CollisionTester;
+import licence.projet.oblika.model.game_objects.drawable.hitboxed.EndPoint;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.characters.MainCharacter;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.FixedPlatform;
 import licence.projet.oblika.model.game_objects.drawable.hitboxed.platforms.MovingPlatform;
@@ -20,13 +21,15 @@ public class Game {
     private List<MovingPlatform> movingPlatforms;
     private List<FixedPlatform> fixedPlateforms;
 
-    MainCharacter character;
+    private MainCharacter character;
+    private EndPoint endPoint;
 
     public Game() {
         renderer = new MasterRenderer();
         LevelStructure level = LevelLoader.parseLevel("level1");
         movingPlatforms = level.getMovingPlatformList();
         fixedPlateforms = level.getFixedPlatformList();
+        endPoint = level.getEndPoint();
 
         // camera = new ???();
 
@@ -64,6 +67,8 @@ public class Game {
         renderer.character(character);
 
         renderer.background();
+
+        renderer.endPoint(endPoint);
 
         renderer.finish();
     }

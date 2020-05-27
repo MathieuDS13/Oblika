@@ -1,0 +1,13 @@
+#version 300 es
+precision mediump float;
+
+out vec4 fragColor;
+
+layout(location = 3) uniform sampler2D tex;
+
+const vec3 color = vec3(1.0, 0.5, 0.2);
+in vec2 uv;
+
+void main() {
+    fragColor = vec4(color, texture(tex, uv).a);
+}

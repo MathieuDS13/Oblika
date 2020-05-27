@@ -15,7 +15,7 @@ public class MainCharacter implements Character, GameObject {
     private Point2D topLeft;
     private Point2D botRight;
     private String textureID;
-    private float speed = 0.7f;
+    private float speed = 1.7f;
     private float height = 1.0f;
     private float width = 0.7f;
     private float slidingSpeed = -0.1f;
