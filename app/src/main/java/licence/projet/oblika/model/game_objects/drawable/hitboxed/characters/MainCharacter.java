@@ -15,7 +15,7 @@ public class MainCharacter implements Character, GameObject {
     private Point2D topLeft;
     private Point2D botRight;
     private String textureID;
-    private float speed = 0.08f;
+    private float speed = 0.7f;
     private float height = 1.0f;
     private float width = 0.2f;
     private float slidingSpeed = -0.1f;
@@ -51,22 +51,21 @@ public class MainCharacter implements Character, GameObject {
     @Override
     public void update() {
 
-
-        //TODO ces putains de collisions je sais pas comment les calculer, physique de merde
-
-
-
         if (TouchEventListener.isRightSideTouched())
             actualPosition.setX(actualPosition.getX() + speed * Time.delta);
+
         if (TouchEventListener.isLeftSideTouched())
-            actualPosition.setX(actualPosition.getX() + speed * Time.delta);
+            actualPosition.setX(actualPosition.getX() - speed * Time.delta);
+
         if (!isGrounded) {
             slidingSpeed += -0.1f; //Gravity
             actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
         }
+
         if(isGrounded){
             slidingSpeed = 0;
         }
+
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
             slidingSpeed = 10;

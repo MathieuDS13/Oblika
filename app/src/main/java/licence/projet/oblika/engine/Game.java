@@ -33,7 +33,7 @@ public class Game {
         movingPlatforms.add(testHorizontal);
         movingPlatforms.add(testVertical);
 
-        character = new MainCharacter(new RectangleHitBox(new  Point2D(-0.5f, 0.5f), new Point2D(0.5f, -0.5f)), new Point2D(0, 0), "none");
+        character = new MainCharacter(new Point2D(0, 0), "none");
     }
 
     public MasterRenderer getRenderer() {

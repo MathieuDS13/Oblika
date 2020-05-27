@@ -14,7 +14,7 @@ public class FixedPlatform implements Platform, GameObject {
     private HitBox hitBox;
     private float range;
 
-    public FixedPlatform(String textureID, Point2D actualPosition, float range, float height, float width) {
+    public FixedPlatform(String textureID, Point2D actualPosition, float height, float width) {
         this.textureID = textureID;
 
         this.topLeft = new Point2D(-width/2, height/2);

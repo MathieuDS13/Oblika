@@ -85,7 +85,7 @@ public class LevelLoader {
         float posY = Float.parseFloat(args[1]);
         verifyFloat(posX);
         verifyFloat(posY);
-        level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY)));
+        level.addFixedPlatformList(new FixedPlatform(args[2], new Point2D(posX, posY), 1, 1));
     }
 
     private static void generateEnemy(String[] args, LevelStructure level)throws Exception {
