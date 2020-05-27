@@ -34,6 +34,11 @@ public class MainCharacter implements Character, GameObject {
     }
 
     @Override
+    public void setGrounded(){
+        isGrounded = true;
+    }
+
+    @Override
     public Point2D getActualPosition() {
         return this.actualPosition;
     }
@@ -58,7 +63,7 @@ public class MainCharacter implements Character, GameObject {
             actualPosition.setX(actualPosition.getX() - speed * Time.delta);
 
         if (!isGrounded) {
-            slidingSpeed += -0.1f; //Gravity
+            slidingSpeed += -0.35f; //Gravity
             actualPosition.setY(actualPosition.getY() + slidingSpeed * Time.delta);
         }
 
@@ -68,7 +73,8 @@ public class MainCharacter implements Character, GameObject {
 
         if (TouchEventListener.isJumping() && isGrounded) {
             AudioHandler.playJumpSound();
-            slidingSpeed = 10;
+            slidingSpeed = 8f;
+            isGrounded = false;
         }
     }
 }

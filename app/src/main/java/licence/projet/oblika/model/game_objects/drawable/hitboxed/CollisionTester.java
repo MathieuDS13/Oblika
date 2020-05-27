@@ -20,12 +20,12 @@ public class CollisionTester {
         ch.getBotRight().setY(charHitBox.getBotRight().getY() + character.getActualPosition().getY());
 
 
-        HitBox platformHitbox = platform.getHitBox();
-        ph.getTopLeft().setX(platformHitbox.getTopLeft().getX() + platform.getActualPosition().getX());
-        ph.getTopLeft().setY(platformHitbox.getTopLeft().getY() + platform.getActualPosition().getY());
+        HitBox platformHitBox = platform.getHitBox();
+        ph.getTopLeft().setX(platformHitBox.getTopLeft().getX() + platform.getActualPosition().getX());
+        ph.getTopLeft().setY(platformHitBox.getTopLeft().getY() + platform.getActualPosition().getY());
 
-        ph.getBotRight().setX(platformHitbox.getBotRight().getX() + platform.getActualPosition().getX());
-        ph.getBotRight().setY(platformHitbox.getBotRight().getY() + platform.getActualPosition().getY());
+        ph.getBotRight().setX(platformHitBox.getBotRight().getX() + platform.getActualPosition().getX());
+        ph.getBotRight().setY(platformHitBox.getBotRight().getY() + platform.getActualPosition().getY());
 
 
         if(!
@@ -50,9 +50,11 @@ public class CollisionTester {
                 else if(minx == Math.abs(dxd) && dxd > 0) {
                     character.getActualPosition().setX(character.getActualPosition().getX() - dxd);
                 }
+
             } else {
                 if(miny == Math.abs(dyg) && dyg > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() + dyg);
+                    character.setGrounded();
                 }
                 else if(miny == Math.abs(dyd) && dyd > 0) {
                     character.getActualPosition().setY(character.getActualPosition().getY() - dyd);

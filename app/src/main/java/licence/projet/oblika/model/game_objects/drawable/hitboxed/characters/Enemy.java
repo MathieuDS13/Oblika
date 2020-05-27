@@ -33,4 +33,9 @@ public class Enemy implements Character, GameObject {
     public void update() {
         //TODO faire l'IA des ennemis enfin s'ils ont un cerveau
     }
+
+    @Override
+    public void setGrounded() {
+
+    }
 }
