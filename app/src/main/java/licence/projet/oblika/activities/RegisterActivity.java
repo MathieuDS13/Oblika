@@ -46,9 +46,14 @@ public class RegisterActivity extends Activity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edEmail.getText().toString();
-                String password = edPass.getText().toString();
-                signUp(email, password);
+                String email = edEmail.getText().toString().trim();
+                String password = edPass.getText().toString().trim();
+                if (isInfoValid(email, password)) {
+                    signUp(email, password);
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Invalid info.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -62,8 +67,6 @@ public class RegisterActivity extends Activity {
     }
 
     private void signUp(String email, String password) {
-        email.trim();
-        password.trim();
         boolean validInfo = false;
         final EditText edPseudo = findViewById(R.id.edPseudo);
 
@@ -80,7 +83,7 @@ public class RegisterActivity extends Activity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 String pseudo = edPseudo.getText().toString();
                                 DataBaseHandler.register(user, pseudo);
-                                DataBaseHandler.setPseudo(pseudo);
+                                DataBaseHandler.login(user);
                                 Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(activity2Intent);
                             } else {
@@ -91,6 +94,9 @@ public class RegisterActivity extends Activity {
                             }
                         }
                     });
+        } else {
+            Toast.makeText(RegisterActivity.this, "Invalid info.",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

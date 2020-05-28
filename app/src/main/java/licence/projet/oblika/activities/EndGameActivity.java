@@ -21,7 +21,7 @@ public class EndGameActivity extends Activity {
         buttonPrefActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent activity2Intent = new Intent(getApplicationContext(), LevelSelect.class);
                 startActivity(activity2Intent);
             }
         });
