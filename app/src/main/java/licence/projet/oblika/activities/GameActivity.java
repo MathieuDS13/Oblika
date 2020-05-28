@@ -48,6 +48,7 @@ public class GameActivity extends Activity {
             public void run() {
                 Intent activity2Intent = new Intent(getApplicationContext(), EndGameActivity.class);
                 startActivity(activity2Intent);
+                finish();
             }
         });
     }
