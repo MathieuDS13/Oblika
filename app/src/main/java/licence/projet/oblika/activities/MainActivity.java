@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         buttonGameActivity.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                Intent activity2Intent = new Intent(getApplicationContext(), GameActivity.class);
+                Intent activity2Intent = new Intent(getApplicationContext(), LevelSelect.class);
                 startActivity(activity2Intent);
             }
         });

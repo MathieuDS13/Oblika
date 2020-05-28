@@ -11,14 +11,19 @@ import licence.projet.oblika.engine.GameEndListener;
 
 public class GLEngine implements GLSurfaceView.Renderer {
     private Game game;
+    private String levelName;
 
     private GameEndListener gameEndListener;
+
+    public GLEngine(String levelName) {
+        this.levelName = levelName;
+    }
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
         Time.init();
 
-        game = new Game();
+        game = new Game(levelName);
         game.setGameEndListener(gameEndListener);
     }
 
