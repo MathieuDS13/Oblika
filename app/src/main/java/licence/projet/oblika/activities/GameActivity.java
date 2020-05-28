@@ -26,7 +26,7 @@ public class GameActivity extends Activity {
 
 
         Intent myIntent = getIntent(); // gets the previously created intent
-        String levelName = myIntent.getStringExtra("firstKeyName");
+        String levelName = myIntent.getStringExtra("levelname");
         if(levelName == null) levelName = "level1";
 
 
