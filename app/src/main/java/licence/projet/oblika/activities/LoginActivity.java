@@ -72,8 +72,9 @@ public class LoginActivity extends Activity {
     }
 
     private void login(String email, String password) {
+        email.trim();
+        password.trim();
         boolean infoIsValid = isInfoValid(email, password);
-
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
