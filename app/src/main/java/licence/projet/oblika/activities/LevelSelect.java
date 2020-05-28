@@ -22,6 +22,7 @@ public class LevelSelect extends Activity {
                 Intent activity2Intent = new Intent(getApplicationContext(), GameActivity.class);
                 activity2Intent.putExtra("levelname","level1");
                 startActivity(activity2Intent);
+                finish();
             }
         });
 
@@ -31,6 +32,7 @@ public class LevelSelect extends Activity {
                 Intent activity2Intent = new Intent(getApplicationContext(), GameActivity.class);
                 activity2Intent.putExtra("levelname","level2");
                 startActivity(activity2Intent);
+                finish();
             }
         });
 
@@ -40,6 +42,7 @@ public class LevelSelect extends Activity {
                 Intent activity2Intent = new Intent(getApplicationContext(), GameActivity.class);
                 activity2Intent.putExtra("levelname","level3");
                 startActivity(activity2Intent);
+                finish();
             }
         });
     }

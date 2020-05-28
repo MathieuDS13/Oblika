@@ -23,6 +23,7 @@ public class EndGameActivity extends Activity {
             public void onClick(View v) {
                 Intent activity2Intent = new Intent(getApplicationContext(), LevelSelect.class);
                 startActivity(activity2Intent);
+                finish();
             }
         });
     }
