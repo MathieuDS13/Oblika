@@ -12,6 +12,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static android.content.ContentValues.TAG;
 
 public class DataBaseHandler {
@@ -41,11 +44,6 @@ public class DataBaseHandler {
     }
 
 
-    private boolean isInfoValid(String mail, String password) {
-        return false;
-    }
-
-
     public static void deleteUser() {
         if (user != null) {
             mDatabase.child("users").child(user.getUid()).removeValue();
@@ -56,13 +54,16 @@ public class DataBaseHandler {
     }
 
     public static void login(FirebaseUser user) {
-        ValueEventListener postListener = new ValueEventListener() {
+        DatabaseReference usersRef = mDatabase.child("users").child(user.getUid());
+
+        ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // Get User object and use the values to update the UI
                 User user1 = dataSnapshot.getValue(User.class);
                 userObj = user1;
                 if (user1 != null) pseudo = user1.getPseudo();
+                update();
             }
 
             @Override
@@ -72,7 +73,8 @@ public class DataBaseHandler {
                 // ...
             }
         };
-        mDatabase.addValueEventListener(postListener);
+        usersRef.addValueEventListener(userListener);
+
     }
 
     public static void register(FirebaseUser user, String pseudo) {
@@ -84,7 +86,12 @@ public class DataBaseHandler {
 
     private static void addNewUser(FirebaseUser user) {
         User user1 = new User(pseudo, user.getEmail());
-        mDatabase.child("users").child(user.getUid()).setValue(user1);
+        DatabaseReference usersRef = mDatabase.child("users");
+
+        Map<String, User> users = new HashMap<>();
+        users.put(user.getUid(), user1);
+
+        usersRef.setValue(users);
     }
 
     public static void addPseudoToUser(FirebaseUser user, String pseudo) {
@@ -94,7 +101,9 @@ public class DataBaseHandler {
 
     public static void update() {
         user = mAuth.getCurrentUser();
-        if (user != null) pseudo = user.getDisplayName();
-        login(user);
+        if (user != null) {
+            pseudo = user.getDisplayName();
+            login(user);
+        }
     }
 }
