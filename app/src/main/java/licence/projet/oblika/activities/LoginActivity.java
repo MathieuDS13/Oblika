@@ -42,11 +42,16 @@ public class LoginActivity extends Activity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                String email = edMail.getText().toString().trim();
-                String password = edPass.getText().toString().trim();
-                if (isInfoValid(email, password)) {
-                    login(email, password);
-                } else {
+                try {
+                    String email = edMail.getText().toString().trim();
+                    String password = edPass.getText().toString().trim();
+                    if (isInfoValid(email, password)) {
+                        login(email, password);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Invalid info.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
                     Toast.makeText(LoginActivity.this, "Invalid info.",
                             Toast.LENGTH_SHORT).show();
                 }

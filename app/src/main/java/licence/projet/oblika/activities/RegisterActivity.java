@@ -46,11 +46,16 @@ public class RegisterActivity extends Activity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = edEmail.getText().toString().trim();
-                String password = edPass.getText().toString().trim();
-                if (isInfoValid(email, password)) {
-                    signUp(email, password);
-                } else {
+                try {
+                    String email = edEmail.getText().toString().trim();
+                    String password = edPass.getText().toString().trim();
+                    if (isInfoValid(email, password)) {
+                        signUp(email, password);
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Invalid info.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
                     Toast.makeText(RegisterActivity.this, "Invalid info.",
                             Toast.LENGTH_SHORT).show();
                 }
