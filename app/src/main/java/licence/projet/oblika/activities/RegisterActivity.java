@@ -62,6 +62,8 @@ public class RegisterActivity extends Activity {
     }
 
     private void signUp(String email, String password) {
+        email.trim();
+        password.trim();
         boolean validInfo = false;
         final EditText edPseudo = findViewById(R.id.edPseudo);
 
