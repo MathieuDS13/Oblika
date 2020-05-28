@@ -9,12 +9,12 @@ import licence.projet.oblika.graphic.helper.ResLoader;
 public class GLView extends GLSurfaceView {
     private final GLEngine renderer;
 
-    public GLView(Context context){
+    public GLView(Context context, String levelName){
         super(context);
 
         ResLoader.init(context);
         setEGLContextClientVersion(3);
-        renderer = new GLEngine();
+        renderer = new GLEngine(levelName);
         setRenderer(renderer);
     }
 

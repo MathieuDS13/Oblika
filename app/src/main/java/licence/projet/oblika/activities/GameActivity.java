@@ -24,12 +24,19 @@ public class GameActivity extends Activity {
 
         super.onCreate(savedInstanceState);
 
+
+        Intent myIntent = getIntent(); // gets the previously created intent
+        String levelName = myIntent.getStringExtra("firstKeyName");
+        if(levelName == null) levelName = "level1";
+
+
+
         SensorManager sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(accelerometerListener,sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),SensorManager.SENSOR_DELAY_NORMAL);
 
         AudioHandler.init(this);
         AudioHandler.startLoop();
-        gLView = new GLView(this);
+        gLView = new GLView(this, levelName);
         LevelLoader.init(this);
 
 
