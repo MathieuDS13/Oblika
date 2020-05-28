@@ -33,5 +33,14 @@ public class LevelSelect extends Activity {
                 startActivity(activity2Intent);
             }
         });
+
+        Button buttonGameActivity3 = findViewById(R.id.button3);
+        buttonGameActivity3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent activity2Intent = new Intent(getApplicationContext(), GameActivity.class);
+                activity2Intent.putExtra("levelname","level3");
+                startActivity(activity2Intent);
+            }
+        });
     }
 }
