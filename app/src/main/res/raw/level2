@@ -8,7 +8,7 @@ MOV_PLAT
 -3.5, -2.0, none,1,0.5, 2.0, 0.5
 /
 STARTPOINT
--4.0, -1.75
+-4.0, 0.0
 /
 ENDPOINT
 4.5,1.75, none
